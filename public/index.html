@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>Embedded Testimonials</title>
+  </head>
+  <body>
+    <iframe
+      id="testimonial-embed"
+      src="http://localhost:3000/embed?id=e381bf31-31ee-45e9-981c-96113d511dcd"
+      frameborder="0"
+      scrolling="no"
+      width="100%"
+      style="overflow: hidden; height: 841px"
+    ></iframe>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.min.js"></script>
+    <script>
+      iFrameResize(
+        {
+          checkOrigin: false,
+          heightCalculationMethod: "lowestElement",
+        },
+        "#testimonial-embed"
+      );
+    </script>
+    <!-- <script
+      type="text/javascript"
+      src="https://testimonial.to/js/iframeResizer.min.js"
+    ></script>
+    <iframe
+      id="testimonialto-test1103-tag-all-light"
+      src="https://embed-v2.testimonial.to/w/test1103?theme=light&card=base&loadMore=on&initialCount=20&tag=all"
+      frameborder="0"
+      scrolling="no"
+      width="100%"
+    ></iframe>
+    <script type="text/javascript">
+      iFrameResize(
+        { checkOrigin: false },
+        "#testimonialto-test1103-tag-all-light"
+      );
+    </script> -->
+  </body>
+</html>
