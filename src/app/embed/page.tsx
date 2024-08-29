@@ -12,12 +12,10 @@ interface TestimonialType {
 }
 
 async function getTestimonials(id: string) {
-  const res = await fetch(
-    `http://localhost:3000/api/getTestimonials?id=${id}`,
-    {
-      next: { revalidate: 60 },
-    }
-  );
+  const URL = process.env.NEXT_PUBLIC_AUTH0_BASE_URL;
+  const res = await fetch(`${URL}/api/getTestimonials?id=${id}`, {
+    next: { revalidate: 60 },
+  });
   if (!res.ok) {
     throw new Error("Failed to fetch testimonials");
   }
