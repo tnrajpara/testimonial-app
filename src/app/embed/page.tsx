@@ -12,10 +12,12 @@ interface TestimonialType {
 }
 
 async function getTestimonials(id: string) {
-  const URL = process.env.NEXT_PUBLIC_AUTH0_BASE_URL;
-  const res = await fetch(`${URL}/api/getTestimonials?id=${id}`, {
-    next: { revalidate: 60 },
-  });
+  const res = await fetch(
+    `https://testimonial-app-sable.vercel.app/api/getTestimonials?id=${id}`,
+    {
+      next: { revalidate: 60 },
+    }
+  );
   if (!res.ok) {
     throw new Error("Failed to fetch testimonials");
   }
