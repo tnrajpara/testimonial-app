@@ -14,7 +14,6 @@ export async function middleware(request: NextRequest) {
     "/editspace",
     "/space",
     "/testimonial",
-    "/embed",
   ];
 
   const isProtectedPath = protectedPaths.some((path) =>
@@ -39,6 +38,5 @@ export const config = {
     "/editspace/:path*",
     "/space/:path*",
     "/testimonial/:path*",
-    "/embed/:path*",
   ],
 };
