@@ -33,7 +33,7 @@ export default async function Testimonial({
   const { data: testimonials } = await getTestimonials(id);
 
   return (
-    <div className="bg-gray-50 text-gray-950 min-h-screen flex  flex-col lg:flex-row">
+    <div className="bg-white text-gray-950 min-h-screen flex  flex-col lg:flex-row">
       <div className="max-w-[calc(100vw-2rem)] mx-auto my-4 max-h-[80vh] md:max-h-[70vh] lg:max-h-[60vh] overflow-y-auto rounded-lg  p-4">
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
           {testimonials.map((testimonial: TestimonialType, index: number) => (
