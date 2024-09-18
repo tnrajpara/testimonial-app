@@ -15,7 +15,7 @@ const SpaceSlugNavbar: React.FC<SpaceSlugNavbarProps> = ({
 }) => {
   return (
     <>
-      <div className="flex justify-between space-x-3 text-gray-100 lg:ml-3 lg:mr-3 lg:py-4 py-2 ">
+      <div className="flex space-x-3 text-gray-100 lg:px-3 px-3 lg:mr-3 lg:py-4 py-2 lg:w-full lg:justify-between">
         <div className="flex items-center space-x-2 ">
           <img src={spaceImg} className="w-14 h-14 rounded-md object-cover" />
           <div>
@@ -25,7 +25,7 @@ const SpaceSlugNavbar: React.FC<SpaceSlugNavbarProps> = ({
           </div>
         </div>
         <Link
-          className="flex place-content-center justify-center items-center bg-white text-gray-950 px-3 py-[1rem] rounded-md "
+          className="flex place-content-center space-x-4 justify-center items-center bg-white text-gray-950 w-[6rem] h-[3rem] px-2 rounded-md "
           href={`/editspace/${spaceId}`}
         >
           <FaPen
@@ -33,10 +33,10 @@ const SpaceSlugNavbar: React.FC<SpaceSlugNavbarProps> = ({
             className="
             text-gray-900 lg:mr-2"
           />
-          Edit Space
+          <p>Edit</p>
         </Link>
       </div>
-      <div className="my-4 w-full h-[0.2px] bg-gray-700"></div>
+      <div className="my-4 w-full h-[0.2px] justify-center text-center  bg-gray-700"></div>
     </>
   );
 };

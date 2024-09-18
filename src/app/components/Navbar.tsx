@@ -12,7 +12,7 @@ const Navbar = () => {
   if (error) return <div>{error.message}</div>;
 
   return (
-    <nav className="flex justify-between items-center w-11/12 mx-auto mt-3 lg:mt-6 ">
+    <nav className="flex justify-around items-center lg:justify-between mx-auto mt-7 lg:mt-6 w-full ">
       <div className="flex space-x-2 justify-center items-center">
         {" "}
         <VscPreview className="text-blue-300 text-2xl lg:text-3xl" />

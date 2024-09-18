@@ -30,12 +30,12 @@ const SpaceSlugComponent: React.FC<SpaceSlugComponentProps> = ({
   };
 
   return (
-    <div className="w-3/5  flex mx-5 min-w-screen flex-col space-y-5 ">
+    <div className="w-full md:w-3/5 flex mx-5 min-w-screen flex-col space-y-5">
       {testimonials.map((testimonial: any) => {
         return (
           <>
-            <div className="flex justify-between flex-col px-3 py-5 space-x-2 lg:mx-6 lg:my-5 mx-3 my-3 min-w-[40rem] bg-[#222222] rounded-md lg:spcae-y-6 space-y-2">
-              <div className="flex justify-between ">
+            <div className="flex flex-col px-3 py-5 space-y-2 lg:mx-6 lg:my-5 mx-3 my-3 bg-[#222222] rounded-md">
+              <div className="flex justify-between items-center">
                 <div className="flex items-center">
                   {[...Array(testimonial.rating)].map((_, index) => (
                     <FaStar key={index} className="text-yellow-400" />
@@ -44,7 +44,7 @@ const SpaceSlugComponent: React.FC<SpaceSlugComponentProps> = ({
                 {favorite ? (
                   <FaHeart
                     onClick={() => setFavorite(false)}
-                    className="text-red-500 cursor-pointer text-3xl "
+                    className="text-red-500 cursor-pointer text-3xl"
                   />
                 ) : (
                   <CiHeart
@@ -53,31 +53,34 @@ const SpaceSlugComponent: React.FC<SpaceSlugComponentProps> = ({
                   />
                 )}
               </div>
-              <div className="text-sm w-3/4"> {testimonial.message} </div>
-              <div className="flex items-center lg:space-x-5 space-x-2">
+
+              <div className="text-sm w-full md:w-3/4">
+                {testimonial.message}
+              </div>
+
+              <div className="flex overflow-x-auto space-x-2 lg:space-x-5">
                 {testimonial.attachments.map((attachment: any, index: any) => (
                   <img
                     key={index}
                     src={attachment}
-                    alt="attachments"
+                    alt="attachment"
                     className="w-20 h-20 rounded-md object-cover"
                   />
                 ))}
               </div>
-              <div className="flex items-center justify-between">
+
+              <div className="flex flex-col md:flex-row justify-between">
                 <div className="flex flex-col space-y-2">
-                  <div className="flex flex-col space-y-2">
-                    <span>Name</span>
-                    <div className="flex space-x-2  items-center">
-                      <img
-                        src={testimonial.photo}
-                        alt="not found"
-                        className="rounded-full w-6 h-6 object-cover"
-                      />
-                      <h1 className="text-sm">{testimonial.name}</h1>
-                    </div>
+                  <span>Name</span>
+                  <div className="flex space-x-2 items-center">
+                    <img
+                      src={testimonial.photo}
+                      alt="not found"
+                      className="rounded-full w-6 h-6 object-cover"
+                    />
+                    <h1 className="text-sm">{testimonial.name}</h1>
                   </div>
-                  <div className="flex flex-col ">
+                  <div className="flex flex-col">
                     <span>Email</span>
                     <h1 className="text-sm">{testimonial.email}</h1>
                   </div>
@@ -99,32 +102,34 @@ const SpaceSlugComponent: React.FC<SpaceSlugComponentProps> = ({
                     )}
                 </div>
               </div>
-              <div className="space-x-2 flex ">
+
+              <div className="flex space-x-2">
                 <button
-                  className=" space-x-2 flex justify-center items-center  text-white px-3 py-1 rounded-md "
+                  className="flex justify-center items-center text-white px-3 py-1 rounded-md"
                   onClick={() => setOpenUpdateModal(true)}
                 >
                   <FaPen />
                   <span>Edit</span>
                 </button>
                 <button
-                  className="flex space-x-2 justify-center items-center  px-3 py-1 rounded-md "
+                  className="flex justify-center items-center px-3 py-1 rounded-md"
                   onClick={handleDelete(testimonial._id)}
                 >
                   <RiDeleteBinFill />
-                  <span> Delete</span>
+                  <span>Delete</span>
                 </button>
               </div>
-              <div className="flex justify-center items-center">
-                {openUpdateModal && (
+
+              {openUpdateModal && (
+                <div className="flex justify-center items-center">
                   <UpdateModal
                     onClose={() => setOpenUpdateModal(false)}
                     testimonialId={testimonial._id}
                     spaceImg={spaceImg}
                     onUpdate={updateTestimonial}
                   />
-                )}
-              </div>
+                </div>
+              )}
             </div>
           </>
         );

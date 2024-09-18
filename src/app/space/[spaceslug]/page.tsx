@@ -24,15 +24,17 @@ const PageContent = () => {
   return (
     <>
       <Navbar />
-      <div className="my-4 w-full h-[0.2px] bg-gray-950"></div>
-      {testimonials[0] && id && (
-        <SpaceSlugNavbar
-          spaceImg={testimonials[0].spaceImage}
-          spaceTitle={testimonials[0].spaceTitle}
-          spaceId={id}
-        />
-      )}
-      <div className="flex flex-end justify-center w-full text-gray-100 ">
+      <div className="my-4 h-[0.2px] bg-gray-950"></div>
+      <div className="flex flex-col space-y-3">
+        {testimonials[0] && id && (
+          <SpaceSlugNavbar
+            spaceImg={testimonials[0].spaceImage}
+            spaceTitle={testimonials[0].spaceTitle}
+            spaceId={id}
+          />
+        )}
+      </div>
+      <div className="flex flex-end justify-center  text-gray-100 flex-col lg:flex-row">
         <SpaceSlugMenubar slugId={id} />
         <SpaceSlugComponent spaceImg={testimonials[0].spaceImage} />
       </div>

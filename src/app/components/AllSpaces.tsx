@@ -53,12 +53,13 @@ const AllSpaces: React.FC<AllSpacesProps> = ({ userId }) => {
         )}
         {data.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:mt-10 mt-5">
-            {data.map((item: any) => (
+            {data.map((item: any,key: any) => (
               <>
                 <Link
                   href={`/space/${slugify(item.spacename, {
                     lower: true,
                   })}?id=${item.spaceId}`}
+                  key={key}
                 >
                   <div className="flex items-center space-x-4">
                     <img
