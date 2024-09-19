@@ -36,28 +36,26 @@ export const TestimonialProvider = ({
     };
   }, [spaceId, fetchTestimonials]);
 
-  const updateTestimonial = async (updatedTestimonial: any) => {
-    try {
-      await axios.put(`/api/updateTestimonial/${updatedTestimonial._id}`, {
-        id: updatedTestimonial._id,
-        data: updatedTestimonial,
-      });
-      setTestimonials((prevTestimonials) =>
-        prevTestimonials.map((testimonial) =>
-          testimonial._id === updatedTestimonial._id
-            ? updatedTestimonial
-            : testimonial
-        )
-      );
-    } catch (error) {
-      console.error("Error updating testimonial:", error);
-    }
-  };
+  // const updateTestimonial = async (updatedTestimonial: any) => {
+  //   try {
+  //     await axios.put(`/api/updateTestimonial/${updatedTestimonial._id}`, {
+  //       id: updatedTestimonial._id,
+  //       data: updatedTestimonial,
+  //     });
+  //     setTestimonials((prevTestimonials) =>
+  //       prevTestimonials.map((testimonial) =>
+  //         testimonial._id === updatedTestimonial._id
+  //           ? updatedTestimonial
+  //           : testimonial
+  //       )
+  //     );
+  //   } catch (error) {
+  //     console.error("Error updating testimonial:", error);
+  //   }
+  // };
 
   return (
-    <TestimonialContext.Provider
-      value={{ testimonials, updateTestimonial, fetchTestimonials }}
-    >
+    <TestimonialContext.Provider value={{ testimonials, fetchTestimonials }}>
       {children}
     </TestimonialContext.Provider>
   );

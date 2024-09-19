@@ -139,6 +139,7 @@ const Modal: React.FC<ModalProps> = ({
           spaceImage: spaceImage,
           spaceTitle: spaceTitle,
           extraQuestions: extraQuestionValues,
+          isLiked: false,
         };
         const formResponse = await axios.post("/api/postTestimonialData", {
           data: data,

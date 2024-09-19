@@ -2,7 +2,7 @@
 
 import React from "react";
 import { useSearchParams } from "next/navigation";
-import axios from "axios";
+// import axios from "axios";
 import SpaceSlugNavbar from "@/app/SlugComponents/SpaceSlugNavbar";
 import SpaceSlugComponent from "@/app/SlugComponents/SpaceSlugComponent";
 import SpaceSlugMenubar from "@/app/SlugComponents/SpaceSlugMenubar";
@@ -35,7 +35,7 @@ const PageContent = () => {
         )}
       </div>
       <div className="flex flex-end justify-center  text-gray-100 flex-col lg:flex-row">
-        <SpaceSlugMenubar slugId={id} />
+        <SpaceSlugMenubar slugId={id} spaceTitle={testimonials[0].spaceTitle} />
         <SpaceSlugComponent spaceImg={testimonials[0].spaceImage} />
       </div>
     </>

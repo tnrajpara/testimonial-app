@@ -20,11 +20,7 @@ export async function middleware(request: NextRequest) {
     request.nextUrl.pathname.startsWith(path)
   );
 
-  console.log("isProtectedPath", isProtectedPath);
-  console.log("isAuthenticated", isAuthenticated);
-
   if (isProtectedPath && !isAuthenticated) {
-    console.log("Redirecting to home page");
     return NextResponse.redirect(new URL("/", request.url));
   }
 

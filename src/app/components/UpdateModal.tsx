@@ -8,7 +8,7 @@ interface UpdateModalProps {
   onClose: () => void;
   testimonialId: string;
   spaceImg: string;
-  onUpdate: (updatedTestimonial: any) => void;
+  // onUpdate: (updatedTestimonial: any) => void;
 }
 
 interface ExtraQuestion {
@@ -21,7 +21,6 @@ const UpdateModal: React.FC<UpdateModalProps> = ({
   onClose,
   testimonialId,
   spaceImg,
-  onUpdate,
 }) => {
   const [data, setData] = useState<any>(null);
   const [name, setName] = useState("");
@@ -142,7 +141,6 @@ const UpdateModal: React.FC<UpdateModalProps> = ({
 
         console.log("response 1", response1);
         if (response.status === 200) {
-          onUpdate(updatedData);
           onClose(); // Close the modal after successful update
         }
       }
@@ -192,7 +190,6 @@ const UpdateModal: React.FC<UpdateModalProps> = ({
         );
         console.log("response 2", response2);
         if (response2.status === 200) {
-          onUpdate(updatedData);
           onClose(); // Close the modal after successful update
         }
       }
@@ -231,7 +228,6 @@ const UpdateModal: React.FC<UpdateModalProps> = ({
         );
         console.log("response 3", response3);
         if (response3.status === 200) {
-          onUpdate(updatedData);
           onClose(); // Close the modal after successful update
         }
       }
@@ -255,7 +251,7 @@ const UpdateModal: React.FC<UpdateModalProps> = ({
         );
         console.log("response 4", response4);
         if (response4.status === 200) {
-          onUpdate(updatedData);
+          // onUpdate(updatedData);
           onClose(); // Close the modal after successful update
         }
       }

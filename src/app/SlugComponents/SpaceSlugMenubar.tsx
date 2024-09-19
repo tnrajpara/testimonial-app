@@ -1,13 +1,18 @@
 import React from "react";
-import Widget from "../components/Widget";
+// import Widget from "../components/Widget";
 import axios from "axios";
 import FirstModal from "../components/WallModal/FirstModal";
+import Link from "next/link";
 
 interface SpaceSlugMenubarProps {
   slugId: string | null;
+  spaceTitle: string | null;
 }
 
-const SpaceSlugMenubar: React.FC<SpaceSlugMenubarProps> = ({ slugId }) => {
+const SpaceSlugMenubar: React.FC<SpaceSlugMenubarProps> = ({
+  slugId,
+  spaceTitle,
+}) => {
   const [data, setData] = React.useState([] as any);
   const [loading, setLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string | null>(null);
@@ -28,6 +33,7 @@ const SpaceSlugMenubar: React.FC<SpaceSlugMenubarProps> = ({ slugId }) => {
 
   console.log("data", data);
   console.log("id", slugId);
+  console.log("title", spaceTitle);
 
   const onClose = () => {
     setOpenWallModal(false);
@@ -56,6 +62,16 @@ const SpaceSlugMenubar: React.FC<SpaceSlugMenubarProps> = ({ slugId }) => {
         </button>
       </ul>
       {openWallModal && <FirstModal onClose={onClose} />}
+
+      <Link
+        className="text-white cursor-pointer"
+        href={`http://localhost:3000/testimonial/${slugId}-${spaceTitle
+          ?.split("_")
+          .join("-")}`}
+      >
+        http://localhost:3000/testimonial/{slugId}-
+        {spaceTitle?.toLowerCase().split("_").join("-")}
+      </Link>
     </div>
   );
 };

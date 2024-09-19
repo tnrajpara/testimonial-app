@@ -21,7 +21,7 @@ const SpaceComponent = () => {
     const fetchData = async () => {
       setLoading(true); // Set loading to true before fetching data
       try {
-        const response = await axios.get(`/api//${id}`);
+        const response = await axios.get(`/api/getSpace/${id}`);
         console.log(response.data.data);
         setTestimonialData(response.data.data);
       } catch (error) {
