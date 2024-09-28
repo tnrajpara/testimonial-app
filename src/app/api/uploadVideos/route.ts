@@ -51,73 +51,84 @@ export async function POST(request: Request) {
       "This video was uploaded through the Vimeo API's NodeJS SDK in a Next.js API route.",
   };
 
-  return new Promise(async (resolve) => {
-    client.upload(
-      tempFilePath,
-      params,
-      function (uri) {
-        client.request(
-          uri + "?fields=link,name,description,transcode.status",
-          async function (error, body, statusCode, headers) {
-            if (error) {
-              console.log("There was an error making the request.");
-              console.log("Server reported:", error);
-              resolve(
-                NextResponse.json({ error: "Upload failed" }, { status: 500 })
+  try {
+    return new Promise((resolve) => {
+      client.upload(
+        tempFilePath,
+        params,
+        function (uri) {
+          client.request(
+            uri + "?fields=link,name,description,transcode.status",
+            async function (error, body, statusCode, headers) {
+              if (error) {
+                console.log("There was an error making the request.");
+                console.log("Server reported:", error);
+                fs.unlinkSync(tempFilePath);
+                resolve(
+                  NextResponse.json({ error: "Upload failed" }, { status: 500 })
+                );
+                return;
+              }
+
+              console.log(
+                `"${tempFilePath}" has been uploaded to ${body.link}`
               );
-              return;
-            }
+              console.log("Name:", body.name);
+              console.log("Description:", body.description);
+              console.log("Transcode status:", body.transcode.status);
 
-            console.log(`"${tempFilePath}" has been uploaded to ${body.link}`);
-            console.log("Name:", body.name);
-            console.log("Description:", body.description);
-            console.log("Transcode status:", body.transcode.status);
+              // Clean up the temporary file
+              fs.unlinkSync(tempFilePath);
 
-            // Clean up the temporary file
-            fs.unlinkSync(tempFilePath);
+              const { db } = await dbConnect();
 
-            const { db } = await dbConnect();
-
-            const videoData = {
-              link: body.link,
-              uploadedAt: new Date(),
-              name,
-              extraQuestionValues,
-              rating,
-              type,
-              spaceId,
-            };
-
-            const result = await db.collection("videos").insertOne(videoData);
-
-            console.log("result -", result);
-            resolve(
-              NextResponse.json({
-                success: true,
+              const videoData = {
                 link: body.link,
-                name: body.name,
-                description: body.description,
-                transcodeStatus: body.transcode.status,
-              })
-            );
-          }
-        );
-      },
-      function (bytesUploaded, bytesTotal) {
-        const percentage = ((bytesUploaded / bytesTotal) * 100).toFixed(2);
-        console.log(bytesUploaded, bytesTotal, percentage + "%");
-      },
-      function (error) {
-        console.log("Failed because:", error);
-        // Clean up the temporary file
-        fs.unlinkSync(tempFilePath);
-        resolve(
-          NextResponse.json(
-            { error: "Upload failed: " + error },
-            { status: 500 }
-          )
-        );
-      }
+                uploadedAt: new Date(),
+                name,
+                extraQuestionValues,
+                rating,
+                type,
+                spaceId,
+              };
+
+              const result = await db.collection("videos").insertOne(videoData);
+
+              console.log("result -", result);
+              resolve(
+                NextResponse.json({
+                  success: true,
+                  link: body.link,
+                  name: body.name,
+                  description: body.description,
+                  transcodeStatus: body.transcode.status,
+                })
+              );
+            }
+          );
+        },
+        function (bytesUploaded, bytesTotal) {
+          const percentage = ((bytesUploaded / bytesTotal) * 100).toFixed(2);
+          console.log(bytesUploaded, bytesTotal, percentage + "%");
+        },
+        function (error) {
+          console.log("Failed because:", error);
+          // Clean up the temporary file
+          fs.unlinkSync(tempFilePath);
+          resolve(
+            NextResponse.json(
+              { error: "Upload failed: " + error },
+              { status: 500 }
+            )
+          );
+        }
+      );
+    });
+  } catch (error) {
+    console.error("Error during video upload:", error);
+    return NextResponse.json(
+      { error: "Something went wrong during video upload" },
+      { status: 500 }
     );
-  });
+  }
 }
