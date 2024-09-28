@@ -1,7 +1,7 @@
 import React from "react";
 import { IoMdClose } from "react-icons/io";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 interface FirstModalProps {
   onClose: () => void;
@@ -26,7 +26,7 @@ const FirstModal: React.FC<FirstModalProps> = ({ onClose }) => {
     <div className="fixed z-10 inset-0 overflow-y-auto">
       <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0 ">
         <div
-          className="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity"
+          className="fixed inset-0 bg-[#] bg-opacity-75 transition-opacity"
           aria-hidden="true"
         ></div>
         <span
@@ -35,9 +35,9 @@ const FirstModal: React.FC<FirstModalProps> = ({ onClose }) => {
         >
           &#8203;
         </span>
-        <div className="inline-block align-bottom bg-gray-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-          <div className="bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-            <span>Embed Wall of Love</span>
+        <div className="inline-block align-bottom bg-[#0b0b0b] rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full border border-[#f4f4f4]">
+          <div className=" px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+            <span className="font-bold text-2xl">Embed Wall of Love</span>
             <button
               className="absolute top-2 right-2 text-gray-100 hover:text-gray-300"
               onClick={onClose}
@@ -46,7 +46,7 @@ const FirstModal: React.FC<FirstModalProps> = ({ onClose }) => {
             </button>
           </div>
           <div className="flex space-x-5 justify-center items-center mb-3 ">
-            <span className="bg-purple-500 text-purple-100 rounded-full p-1 ">
+            <span className="bg-[#f4f4f4]  rounded-full text-[#0b0b0b] w-1/6 h-1/6 px-2 py-1 text-center">
               Step- {jumpToStep}
             </span>
             <span>
@@ -70,13 +70,13 @@ const FirstModal: React.FC<FirstModalProps> = ({ onClose }) => {
             <div className="relative mb-4">
               <button
                 onClick={copyToClipboard}
-                className="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded text-sm"
+                className="absolute top-2 right-2 text-[#0b0b0b] bg-[#f4f4f4] px-2 py-1 rounded text-sm"
               >
                 {copied ? "Copied!" : "Copy"}
               </button>
               <SyntaxHighlighter
                 language="html"
-                style={vscDarkPlus}
+                style={atomDark}
                 customStyle={{
                   padding: "1rem",
                   fontSize: "14px",

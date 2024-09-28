@@ -8,13 +8,7 @@ export async function middleware(request: NextRequest) {
   const isAuthenticated = !!session?.user;
 
   // List of paths that require authentication
-  const protectedPaths = [
-    "/create",
-    "/profile",
-    "/editspace",
-    "/space",
-    "/testimonial",
-  ];
+  const protectedPaths = ["/create", "/profile", "/editspace", "/space"];
 
   const isProtectedPath = protectedPaths.some((path) =>
     request.nextUrl.pathname.startsWith(path)
@@ -33,6 +27,5 @@ export const config = {
     "/profile/:path*",
     "/editspace/:path*",
     "/space/:path*",
-    "/testimonial/:path*",
   ],
 };

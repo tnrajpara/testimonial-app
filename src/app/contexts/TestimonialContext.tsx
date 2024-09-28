@@ -55,7 +55,9 @@ export const TestimonialProvider = ({
   // };
 
   return (
-    <TestimonialContext.Provider value={{ testimonials, fetchTestimonials }}>
+    <TestimonialContext.Provider
+      value={{ testimonials, fetchTestimonials, setTestimonials }}
+    >
       {children}
     </TestimonialContext.Provider>
   );

@@ -45,15 +45,17 @@ const AllSpaces: React.FC<AllSpacesProps> = ({ userId }) => {
   return (
     <div className="my-8 mt-5 lg:mt-[3rem] max-w-[120rem] text-center text-gray-100 mx-4 ml-6">
       <div>
-        <h1 className="text-left text-4xl font-semibold">My Spaces</h1>
+        <h1 className="text-left text-4xl font-bold">My Spaces</h1>
         {loading && (
-          <div className="flex justify-center items-center h-40">
-            <div className="animate-ping rounded-full h-20 w-20 border-t-2 border-b-2 border-gray-100"></div>
+          <div className="flex justify-start items-start h-40">
+            <div className=" rounded-full h-20 w-20 ">
+              <img src="/loading.gif" />
+            </div>
           </div>
         )}
         {data.length > 0 && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:mt-10 mt-5">
-            {data.map((item: any,key: any) => (
+            {data.map((item: any, key: any) => (
               <>
                 <Link
                   href={`/space/${slugify(item.spacename, {
@@ -69,7 +71,7 @@ const AllSpaces: React.FC<AllSpacesProps> = ({ userId }) => {
                       height={80}
                       className="object-cover rounded-md"
                     />
-                    <p className="text-gray-100 text-2xl">
+                    <p className="text-gray-100 text-2xl font-semibold">
                       {item.spacename.split("_").join(" ")}
                     </p>
                   </div>

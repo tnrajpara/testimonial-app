@@ -52,7 +52,7 @@ const SpaceSlugMenubar: React.FC<SpaceSlugMenubarProps> = ({
     <div className="mx-3 my-3 flex flex-col p-2 w-1/4">
       <ul>
         <button
-          className="bg-[#222222] px-4 py-2 w-[10rem] h-[3rem]  text-white rounded-md"
+          className="bg-[#0b0b0b] px-4 py-2 w-[10rem] h-[3rem]  text-white rounded-md"
           onClick={() => {
             setOpenWallModal(true);
             console.log("open", openWallModal);

@@ -255,7 +255,7 @@ const Page = () => {
               </label>
               <input
                 type="text"
-                className="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-[#222222]  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-[#0b0b0b]  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder=""
                 required
                 value={state.spacename}
@@ -303,7 +303,7 @@ const Page = () => {
                   />
                   <label
                     htmlFor="newLogoURL"
-                    className="py-2 px-3 bg-[#222222]  text-gray-100 rounded-md transition duration-150 ease-in-out cursor-pointer"
+                    className="py-2 px-3 bg-[#0b0b0b]  text-gray-100 rounded-md transition duration-150 ease-in-out cursor-pointer"
                   >
                     Change
                   </label>
@@ -320,7 +320,7 @@ const Page = () => {
               <input
                 type="text"
                 id="header-title"
-                className="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-[#222222]  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="bg-gray-50 border outline-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-[#0b0b0b]  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required
                 autoComplete="off"
                 value={state.title}
@@ -338,7 +338,7 @@ const Page = () => {
               </label>
               <textarea
                 id="custom-message"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-[#222222]  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 lg:h-[6rem]"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-[#0b0b0b]  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 lg:h-[6rem]"
                 required
                 onChange={(e) => {
                   dispatch({ type: "SET_MESSAGE", payload: e.target.value });
@@ -355,7 +355,7 @@ const Page = () => {
               <div className="space-y-4 mb-5">
                 {questions.map((question, index) => (
                   <div key={index} className="flex items-center space-x-3 ">
-                    <div className="flex justify-between bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  w-full p-2.5 dark:bg-[#222222]  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <div className="flex justify-between bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  w-full p-2.5 dark:bg-[#0b0b0b]  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                       <input
                         type="text"
                         value={question}
@@ -393,7 +393,7 @@ const Page = () => {
                   <div>
                     <button
                       type="button"
-                      className="inline-flex w-full justify-center gap-x-1.5   px-3 py-2 text-sm font-semibold bg-gray-50  border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 shadow-sm ring-1 ring-inset ring-gray-300 dark:bg-[#222222]   dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      className="inline-flex w-full justify-center gap-x-1.5   px-3 py-2 text-sm font-semibold bg-gray-50  border-gray-300 text-gray-900  rounded-lg focus:ring-blue-500 focus:border-blue-500 shadow-sm ring-1 ring-inset ring-gray-300 dark:bg-[#0b0b0b]   dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                       id="menu-button"
                       aria-expanded="true"
                       aria-haspopup="true"
@@ -430,8 +430,8 @@ const Page = () => {
                             <div
                               className={`flex justify-between ${
                                 index % 2 === 0
-                                  ? "bg-[#222222]  "
-                                  : "bg-[#222222] "
+                                  ? "bg-[#0b0b0b]  "
+                                  : "bg-[#0b0b0b] "
                               }`}
                             >
                               <div
@@ -578,7 +578,7 @@ const Page = () => {
                       }}
                       className="sr-only peer"
                     />
-                    <div className="relative w-14 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-[#222222]  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                    <div className="relative w-14 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-[#0b0b0b]  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                   </label>
                 </div>
                 <div>
@@ -596,7 +596,7 @@ const Page = () => {
                       onChange={() => dispatch({ type: "TOGGLE_THEME" })}
                       className="sr-only peer"
                     />
-                    <div className="relative w-14 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-[#222222]  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                    <div className="relative w-14 h-7 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-[#0b0b0b]  peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                   </label>
                 </div>
               </div>

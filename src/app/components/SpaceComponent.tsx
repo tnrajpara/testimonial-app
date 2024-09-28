@@ -4,6 +4,8 @@ import { usePathname } from "next/navigation";
 import axios from "axios";
 import { FaPen } from "react-icons/fa";
 import ParentModal from "./ParentModal";
+import { IoMdVideocam } from "react-icons/io";
+import VideoModal from "./VideoModal";
 
 const SpaceComponent = () => {
   const { user } = useUser();
@@ -11,6 +13,7 @@ const SpaceComponent = () => {
   const [testimonialData, setTestimonialData] = React.useState([] as any);
   const [loading, setLoading] = React.useState(true); // Add loading state
   const [showModal, setShowModal] = React.useState(false);
+  const [showVideoModal, setShowVideoModal] = React.useState(false);
 
   const pathName = usePathname().split("/").pop();
   const parts = pathName?.split("-");
@@ -41,7 +44,7 @@ const SpaceComponent = () => {
       <div
         className={
           testimonialData.theme === true
-            ? " lg:w-1/2 w-full h-full  flex bg-gray-800 text-gray-50 mt-5 justify-center flex-col items-center px-3 py-4 rounded-md border border-black"
+            ? " lg:w-1/2 w-full h-full  flex bg-[#0b0b0b] text-gray-50 mt-5 justify-center flex-col items-center px-3 py-4 rounded-md border border-black"
             : "lg:w-1/2  w-full h-full  flex isolate aspect-video bg-white/80 text-gray-900 mt-5 justify-center flex-col items-center px-3 py-4 rounded-md"
         }
       >
@@ -75,27 +78,48 @@ const SpaceComponent = () => {
                 </li>
               ))}
             </ul>
-            <div
-              style={{
-                backgroundColor: testimonialData.buttonColor,
-                padding: "10px",
-                borderRadius: "4px",
-                display: "flex",
-                gap: "15px",
-                justifyContent: "center",
-                alignItems: "center",
-                width: "calc(100% - 20px)",
-              }}
-            >
-              <FaPen />
-              <button
-                onClick={() => {
-                  setShowModal(true);
-                  console.log("clicked", showModal);
+            <div className="flex space-x-5">
+              <div
+                className="bg-violet-900"
+                style={{
+                  padding: "10px",
+                  borderRadius: "4px",
+                  display: "flex",
+                  gap: "15px",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  backgroundColor: testimonialData.buttonColor,
+                  width: "calc(100% - 20px)",
                 }}
               >
-                Send in Text{" "}
-              </button>
+                <FaPen />
+                <button
+                  onClick={() => {
+                    setShowModal(true);
+                    console.log("clicked", showModal);
+                  }}
+                >
+                  Send in Text{" "}
+                </button>
+              </div>
+              <div
+                style={{
+                  padding: "10px",
+                  borderRadius: "4px",
+                  display: "flex",
+                  gap: "15px",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  width: "calc(100% - 20px)",
+                }}
+                onClick={() => {
+                  setShowVideoModal(true);
+                }}
+              >
+                <IoMdVideocam className="text-xl" />
+
+                <button>Record a Video</button>
+              </div>
             </div>
           </div>
         )}
@@ -109,6 +133,14 @@ const SpaceComponent = () => {
             spaceId={id ?? ""}
             spaceImage={testimonialData.image}
             spaceTitle={testimonialData.title}
+          />
+        )}
+
+        {showVideoModal && (
+          <VideoModal
+            onClose={() => setShowVideoModal(false)}
+            extraQuestions={testimonialData.extraInformation}
+            spaceId={id ?? ""}
           />
         )}
       </div>

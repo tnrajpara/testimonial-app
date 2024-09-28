@@ -1,5 +1,7 @@
+"use client";
 import React from "react";
 import { FaStar } from "react-icons/fa";
+import VideoPlayer from "./VideoPlayer";
 
 type Testimonial = {
   name: string;
@@ -7,6 +9,8 @@ type Testimonial = {
   rating: number;
   photo: string;
   attachments?: string[];
+  type: string;
+  link?: string;
 };
 
 const TestimonialCard: React.FC<Testimonial> = ({
@@ -15,15 +19,19 @@ const TestimonialCard: React.FC<Testimonial> = ({
   rating,
   photo,
   attachments,
+  type,
+  link,
 }) => {
   return (
     <div className="bg-gray-900 text-gray-50 shadow-lg rounded-lg p-4 md:p-6 max-w-[calc(100vw-2rem)] mx-auto lg:space-y-4 space-y-2 ">
       <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4 lg:flex-row">
-        <img
-          src={photo}
-          alt={name}
-          className="w-16 h-16 sm:w-12 sm:h-12 rounded-full object-cover flex-shrink-0 "
-        />
+        {type === "text" && (
+          <img
+            src={photo}
+            alt={name}
+            className="w-16 h-16 sm:w-12 sm:h-12 rounded-ful  l object-cover flex-shrink-0 "
+          />
+        )}
         <div className="flex-grow">
           <h2 className="text-lg font-semibold">{name}</h2>
           <div className="flex items-center space-x-1">
@@ -52,6 +60,7 @@ const TestimonialCard: React.FC<Testimonial> = ({
           </div>
         </div>
       )}
+      {type === "video" && <VideoPlayer videoId={link?.split("/").pop()} />}
     </div>
   );
 };

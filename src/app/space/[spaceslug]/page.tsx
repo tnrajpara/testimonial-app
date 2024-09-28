@@ -18,7 +18,7 @@ const PageContent = () => {
   const id = searchParams.get("id");
 
   if (testimonials.length === 0) {
-    return <div>Loading...</div>;
+    return <img src="/loading.gif" />;
   }
 
   return (

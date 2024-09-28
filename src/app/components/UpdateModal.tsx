@@ -1,6 +1,5 @@
 import React, { useState, ChangeEvent, useEffect } from "react";
-import { IoMdClose } from "react-icons/io";
-import { FaStar } from "react-icons/fa";
+import { IoMdClose, IoMdStar } from "react-icons/io";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import axios from "axios";
 
@@ -266,7 +265,7 @@ const UpdateModal: React.FC<UpdateModalProps> = ({
     <div className="fixed z-10 inset-0 overflow-y-auto">
       <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
         <div
-          className="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity"
+          className="fixed inset-0 bg-gray-950 bg-opacity-75 transition-opacity"
           aria-hidden="true"
         ></div>
 
@@ -277,8 +276,8 @@ const UpdateModal: React.FC<UpdateModalProps> = ({
           &#8203;
         </span>
 
-        <div className="inline-block align-bottom bg-gray-800 rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-          <div className="bg-gray-800 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+        <div className="inline-block align-bottom bg-[#0b0b0b] border border-[#f4f4f4] rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+          <div className="bg-[#0b0b0b] px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <button
               className="absolute top-2 right-2 text-gray-100 hover:text-gray-300"
               onClick={onClose}
@@ -297,12 +296,12 @@ const UpdateModal: React.FC<UpdateModalProps> = ({
 
               {/* Rating */}
               <div className="mb-4">
-                <div className="flex items-center">
+                <div className="flex items-center justify-center">
                   {[1, 2, 3, 4, 5].map((star) => (
-                    <FaStar
+                    <IoMdStar
                       key={star}
-                      size={24}
-                      color={star <= rating ? "#00FFFF" : "#D1D5DB"}
+                      size={35}
+                      color={star <= rating ? "#f4f4f4" : "#D1D5DB"}
                       onClick={() => handleRatingChange(star)}
                     />
                   ))}
@@ -313,7 +312,7 @@ const UpdateModal: React.FC<UpdateModalProps> = ({
               <div className="mb-4">
                 <textarea
                   id="message"
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 bg-[#0b0b0b] leading-tight focus:outline-none focus:shadow-outline"
                   rows={4}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
@@ -354,7 +353,7 @@ const UpdateModal: React.FC<UpdateModalProps> = ({
                 <div className="flex items-center">
                   <label
                     htmlFor="photo-input"
-                    className="bg-gray-700 hover:bg-gray-600 text-gray-100 font-bold py-2 px-4 rounded cursor-pointer"
+                    className="bg-[#f4f4f4]  text-[#0b0b0b]  font-bold py-2 px-4 rounded cursor-pointer"
                   >
                     Choose File
                   </label>
@@ -380,7 +379,7 @@ const UpdateModal: React.FC<UpdateModalProps> = ({
                 <input
                   type="text"
                   id="name"
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 bg-[#0b0b0b] leading-tight focus:outline-none focus:shadow-outline"
                   placeholder="Enter your name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -398,7 +397,7 @@ const UpdateModal: React.FC<UpdateModalProps> = ({
                 <input
                   type="email"
                   id="email"
-                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                  className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 bg-[#0b0b0b] leading-tight focus:outline-none focus:shadow-outline"
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -416,7 +415,7 @@ const UpdateModal: React.FC<UpdateModalProps> = ({
                     <input
                       type="text"
                       id={`extra-question-${index}`}
-                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 bg-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 bg-[#0b0b0b] leading-tight focus:outline-none focus:shadow-outline"
                       placeholder={question}
                       value={value}
                       onChange={(e) =>
@@ -443,11 +442,11 @@ const UpdateModal: React.FC<UpdateModalProps> = ({
                       className="w-20 h-20 rounded-full object-cover mr-4"
                     />
                   ) : (
-                    <div className="w-20 h-20 rounded-full bg-gray-700 mr-4"></div>
+                    <div className="w-20 h-20 rounded-full bg-[#0b0b0b] mr-4"></div>
                   )}
                   <label
                     htmlFor="single-photo-input"
-                    className="bg-gray-700 hover:bg-gray-600 text-gray-100 font-bold py-2 px-4 rounded cursor-pointer"
+                    className="bg-[#f4f4f4]  text-[#0b0b0b] font-bold py-1 px-3 rounded-full cursor-pointer"
                   >
                     Choose Image
                   </label>
@@ -475,7 +474,7 @@ const UpdateModal: React.FC<UpdateModalProps> = ({
               <div className="flex justify-end">
                 <button
                   type="submit"
-                  className="bg-gray-700 hover:bg-gray-600 text-gray-100 font-bold py-2 px-4 rounded"
+                  className="bg-[#f4f4f4]  text-[#0b0b0b] font-bold py-2 px-4 rounded"
                 >
                   Update
                 </button>

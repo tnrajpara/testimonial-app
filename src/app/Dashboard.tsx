@@ -23,7 +23,7 @@ const Dashboard = () => {
 
         <Link
           href="/create"
-          className=" bg-blue-600 text-white px-5 py-2 rounded-md mt-5"
+          className=" bg-[#f4f4f4] border-2 border-[#0b0b0b] text-[#0b0b0b] px-5 py-2 rounded-full mt-5 font-semibold hover:transition-all hover:delay-100 "
         >
           Create your own Wall of love
         </Link>

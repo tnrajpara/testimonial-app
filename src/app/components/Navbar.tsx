@@ -2,26 +2,30 @@
 import React from "react";
 import { VscPreview } from "react-icons/vsc";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
 const Navbar = () => {
   const { user, error, isLoading } = useUser();
   const [dropDown, setShowDropDown] = React.useState(false);
+  const pathname = usePathname();
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
 
   return (
-    <nav className="flex justify-around items-center lg:justify-between mx-auto mt-7 lg:mt-6 w-full ">
-      <div className="flex space-x-2 justify-center items-center">
+    <nav
+      className={`flex justify-around items-center lg:justify-between  mt-7 lg:mt-6 w-full `}
+    >
+      <div className="flex space-x-2 justify-center items-center ml-5">
         {" "}
-        <VscPreview className="text-blue-300 text-2xl lg:text-3xl" />
-        <h1 className="text-gray-100 text-2xl lg:text-3xl font-semibold">
+        {/* <VscPreview className="text-blue-300 text-2xl lg:text-3xl" /> */}
+        <h1 className="text-gray-100 text-2xl lg:text-3xl font-bold">
           Testimonial{" "}
         </h1>
       </div>
       {user ? (
-        <div className="relative">
+        <div className="relative mr-5">
           <img
             src={user.picture as string}
             alt=""

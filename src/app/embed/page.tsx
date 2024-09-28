@@ -9,11 +9,13 @@ interface TestimonialType {
   rating: number;
   photo: string;
   attachments: string[];
+  type: string;
+  link?: string;
 }
 
 async function getTestimonials(id: string) {
   const res = await fetch(
-    `https://testimonial-app-sable.vercel.app/api/getTestimonials?id=${id}`,
+    `http://localhost:3000/api/getTestimonials?id=${id}`,
     {
       next: { revalidate: 60 },
     }
