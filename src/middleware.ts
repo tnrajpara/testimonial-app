@@ -6,6 +6,9 @@ export async function middleware(request: NextRequest) {
   const res = new NextResponse();
   const session = await getSession(request, res);
   const isAuthenticated = !!session?.user;
+  const s = await getSession(request, res);
+
+  // console.log("session", s);
 
   // List of paths that require authentication
   const protectedPaths = ["/create", "/profile", "/editspace", "/space"];

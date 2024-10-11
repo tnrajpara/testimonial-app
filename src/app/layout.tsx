@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import { Onest } from "next/font/google";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
 
 import "./globals.css";
 
-const inter = Manrope({ subsets: ["latin"] });
+const inter = Onest({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Testimonials",
@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <UserProvider>
-        <body className={`${inter.className} bg-[#0b0b0b] text-[#fafafa]`}>
+        <body className={`${inter.className} bg-base-color text-[#fafafa]`}>
           {children}
         </body>
       </UserProvider>

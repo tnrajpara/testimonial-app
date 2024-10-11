@@ -68,7 +68,7 @@ const Testimonial: React.FC<TestimonialProps> = ({ testimonial, spaceImg }) => {
   const renderRating = (rating: number) => (
     <div className="flex items-center">
       {[...Array(rating)].map((_, index) => (
-        <IoMdStar key={index} className="text-[#f4f4f4] text-3xl" />
+        <IoMdStar key={index} className="text-secondary-color text-3xl" />
       ))}
     </div>
   );
@@ -109,7 +109,9 @@ const Testimonial: React.FC<TestimonialProps> = ({ testimonial, spaceImg }) => {
         {details &&
           Object.entries(details).map(([key, value], index) => (
             <div key={index} className="flex flex-col">
-              <span className="font-semibold text-lg">{key}</span>
+              <span className="font-semibold text-lg  first-letter:capitalize">
+                {key}
+              </span>
               <h1 className="text-sm">
                 {value === undefined || value === "" ? "Not defined" : value}
               </h1>
@@ -120,7 +122,7 @@ const Testimonial: React.FC<TestimonialProps> = ({ testimonial, spaceImg }) => {
   };
 
   return (
-    <div className="flex flex-col px-3 py-5 space-y-2 lg:mx-6 lg:my-5 mx-3 my-3 bg-[#0b0b0b] border border-[#f4f4f4] ">
+    <div className="flex flex-col  py-5 space-y-2 lg:mx-6 lg:my-5 mx-3 my-3  border border-secondary-color rounded-2xl bg-primary-color px-6 border-r-2">
       <div className="flex justify-between items-center">
         {renderRating(Number(testimonial.rating))}
         <button
@@ -128,7 +130,7 @@ const Testimonial: React.FC<TestimonialProps> = ({ testimonial, spaceImg }) => {
           className="focus:outline-none"
         >
           {isLiked ? (
-            <FaHeart className="text-red-500 cursor-pointer w-8 h-8" />
+            <FaHeart className="text-[#697565] cursor-pointer w-8 h-8" />
           ) : (
             <CiHeart className="text-gray-400 cursor-pointer w-8 h-8" />
           )}

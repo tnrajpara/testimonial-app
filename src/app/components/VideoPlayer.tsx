@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const VideoPlayer = ({ videoId }: { videoId: string | undefined }) => {
-  const [videoLink, setVideoLink] = useState<any>(null);
+  const [videoLink, setVideoLink] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchVideoData = async () => {
@@ -15,12 +15,33 @@ const VideoPlayer = ({ videoId }: { videoId: string | undefined }) => {
           }
         );
         const data = await response.json();
-        setVideoLink(data.player_embed_url);
+
+        // Modify the player embed URL to include customization parameters
+        const customizedUrl = new URL(data.player_embed_url);
+        customizedUrl.searchParams.append("title", "0");
+        customizedUrl.searchParams.append("byline", "0");
+        customizedUrl.searchParams.append("portrait", "0");
+        customizedUrl.searchParams.append("playsinline", "0");
+        customizedUrl.searchParams.append("autopause", "0");
+        customizedUrl.searchParams.append("quality", "1080p");
+        customizedUrl.searchParams.append("transparent", "0");
+        customizedUrl.searchParams.append("color", "ffffff");
+        customizedUrl.searchParams.append("controls", "1");
+        customizedUrl.searchParams.append("like", "0");
+        customizedUrl.searchParams.append("watchlater", "0");
+        customizedUrl.searchParams.append("share", "0");
+        customizedUrl.searchParams.append("pip", "0");
+        customizedUrl.searchParams.append("dnt", "1");
+
+        setVideoLink(customizedUrl.toString());
       } catch (error) {
         console.error("Error fetching video data:", error);
       }
     };
-    fetchVideoData();
+
+    if (videoId) {
+      fetchVideoData();
+    }
   }, [videoId]);
 
   if (!videoLink) {
@@ -28,16 +49,16 @@ const VideoPlayer = ({ videoId }: { videoId: string | undefined }) => {
   }
 
   return (
-    <div className="">
+    <div className="w-full aspect-video">
       {videoLink && (
         <iframe
-          src={`${videoLink}`}
+          src={videoLink}
           width="100%"
-          height="315"
+          height="100%"
           frameBorder="0"
           allow="autoplay; fullscreen; picture-in-picture"
           allowFullScreen
-          className="w-full h-full object-cover"
+          className="w-full h-full"
         ></iframe>
       )}
     </div>

@@ -95,7 +95,9 @@ export async function POST(request: NextRequest) {
                 type,
                 spaceId,
               };
-              const result = await db.collection("videos").insertOne(videoData);
+              const result = await db
+                .collection("testimonial-data")
+                .insertOne(videoData);
 
               console.log("Database Insert Result:", result);
 
