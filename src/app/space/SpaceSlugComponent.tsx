@@ -117,13 +117,15 @@ const SpaceSlugComponent: React.FC<SpaceSlugComponentProps> = ({
   return (
     <div className="w-full md:w-3/5 flex mx-5 min-w-screen flex-col space-y-5">
       {/* {JSON.stringify(testimonials)} */}
-      {testimonials.map((testimonial: any) => {
-        return (
-          <>
-            <Testimonial testimonial={testimonial} spaceImg={spaceImg} />
-          </>
-        );
-      })}
+      {testimonials.length < 0 && <p>No Testimonials Found!</p>}
+      {testimonials.length > 0 &&
+        testimonials.map((testimonial: any) => {
+          return (
+            <>
+              <Testimonial testimonial={testimonial} spaceImg={spaceImg} />
+            </>
+          );
+        })}
     </div>
   );
 };
