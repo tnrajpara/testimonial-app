@@ -71,8 +71,10 @@ const SpaceSlugMenubar: React.FC<SpaceSlugMenubarProps> = ({
           ?.split("_")
           .join("-")}`}
       >
-        http://localhost:3000/testimonial/{slugId}-
-        {spaceTitle?.toLowerCase().split("_").join("-")}
+        <p>
+          http://localhost:3000/testimonial/{slugId}-
+          {spaceTitle?.toLowerCase().split("_").join("-")}
+        </p>
       </Link>
     </div>
   );

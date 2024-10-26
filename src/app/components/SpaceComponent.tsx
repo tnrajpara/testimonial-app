@@ -45,14 +45,16 @@ const SpaceComponent = () => {
         className={
           testimonialData.theme === true
             ? " lg:w-1/2 w-full h-full  flex bg-[#0b0b0b] text-gray-50 mt-5 justify-center flex-col items-center px-3 py-4 rounded-md border border-black"
-            : "lg:w-1/2  w-full h-full  flex isolate aspect-video bg-white/80 text-gray-900 mt-5 justify-center flex-col items-center px-3 py-4 rounded-md"
+            : "lg:w-1/2  w-full h-full  flex isolate aspect-video bg-base-color  text-gray-100 mt-5 justify-center flex-col items-center px-3 py-4 rounded-md"
         }
       >
-        <img
-          src={testimonialData.image}
-          className="w-32 h-32 rounded-xl object-cover mb-2"
-          alt="profile"
-        />
+        {testimonialData.image && (
+          <img
+            src={testimonialData.image}
+            className="w-32 h-32 rounded-xl object-cover mb-2"
+            alt="profile"
+          />
+        )}
         {loading ? (
           <div>Loading testimonials...</div> // Show loading state
         ) : (
