@@ -9,7 +9,6 @@ const Dashboard = () => {
   const userId = user?.sub?.split("|")[1];
   return (
     <div className="">
-      <Navbar />
       <div className="w-3/4 mx-auto  flex items-center flex-col justify-center max-w-[100rem] min-h-[85vh] text-center">
         <h1 className="text-3xl lg:text-6xl text-gray-100 font-bold">
           Welcome to the Testimonial App

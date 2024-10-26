@@ -10,7 +10,18 @@ const Navbar = () => {
   const [dropDown, setShowDropDown] = React.useState(false);
   const pathname = usePathname();
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading)
+    return (
+      <nav className="flex justify-around items-center lg:justify-between mt-7 lg:mt-6 w-full animate-pulse">
+        <div className="flex space-x-2 justify-center items-center ml-5">
+          <div className="bg-primary-color h-8 lg:h-10 w-32 rounded"></div>
+        </div>
+        <div className="relative mr-5">
+          <div className="w-12 h-12 bg-primary-color rounded-md"></div>
+        </div>
+      </nav>
+    );
+
   if (error) return <div>{error.message}</div>;
 
   return (

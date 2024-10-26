@@ -1,55 +1,64 @@
-"use client";
+// import React from "react";
+import SpaceSlugNavbar from "@/app/space/SpaceSlugNavbar";
+import SpaceSlugParent from "../SpaceSlugParent";
+import dbConnect from "../../utils/dbConnect";
 
-import React from "react";
-import { useSearchParams } from "next/navigation";
-// import axios from "axios";
-import SpaceSlugNavbar from "@/app/SlugComponents/SpaceSlugNavbar";
-import SpaceSlugComponent from "@/app/SlugComponents/SpaceSlugComponent";
-import SpaceSlugMenubar from "@/app/SlugComponents/SpaceSlugMenubar";
-import Navbar from "@/app/components/Navbar";
-import {
-  TestimonialProvider,
-  useTestimonials,
-} from "../../contexts/TestimonialContext";
+// import { useTestimonials } from "../../contexts/TestimonialContext";
 
-const PageContent = () => {
-  const { testimonials } = useTestimonials();
-  const searchParams = useSearchParams();
-  const id = searchParams.get("id");
+// Define type for space data
+interface SpaceData {
+  spaceImage: string;
+  spaceTitle: string;
+  // Add other fields as needed
+}
 
-  if (testimonials.length === 0) {
-    return <img src="/loading.gif" />;
+const Page = async ({
+  params,
+  searchParams,
+}: {
+  params: { slug: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) => {
+  // Get ID once
+  const spaceId = searchParams?.id as string;
+
+  const { db } = await dbConnect();
+
+  const spaceData = await db
+    .collection("spaces-db")
+    .findOne({ spaceId: spaceId });
+
+  if (!spaceData) {
+    return (
+      <div className="flex items-center justify-center min-h-[200px] text-gray-700">
+        Space not found
+      </div>
+    );
   }
 
   return (
     <>
-      <Navbar />
-      <div className="my-4 h-[0.2px] bg-gray-950"></div>
+      <div className="my-4 h-[0.2px] bg-gray-950" />
       <div className="flex flex-col space-y-3">
-        {testimonials[0] && id && (
+        {/* <h1 className="text-xl font-semibold">
+          {spaceData.title.split("_").join(" ")}
+        </h1> */}
+
+        {spaceId && (
           <SpaceSlugNavbar
-            spaceImg={testimonials[0].spaceImage}
-            spaceTitle={testimonials[0].spaceTitle}
-            spaceId={id}
+            spaceImg={spaceData.image}
+            spaceTitle={spaceData.title}
+            spaceId={spaceId}
           />
         )}
       </div>
-      <div className="flex flex-end justify-center  text-gray-100 flex-col lg:flex-row">
-        <SpaceSlugMenubar slugId={id} spaceTitle={testimonials[0].spaceTitle} />
-        <SpaceSlugComponent spaceImg={testimonials[0].spaceImage} />
-      </div>
+
+      <SpaceSlugParent
+        spaceId={spaceId}
+        spaceTitle={spaceData.title}
+        spaceImg={spaceData.spaceImage}
+      />
     </>
-  );
-};
-
-const Page = () => {
-  const searchParams = useSearchParams();
-  const id = searchParams.get("id");
-
-  return (
-    <TestimonialProvider spaceId={id}>
-      <PageContent />
-    </TestimonialProvider>
   );
 };
 

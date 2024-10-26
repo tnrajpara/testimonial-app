@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 // import Widget from "../components/Widget";
 import axios from "axios";
@@ -18,20 +20,20 @@ const SpaceSlugMenubar: React.FC<SpaceSlugMenubarProps> = ({
   const [error, setError] = React.useState<string | null>(null);
   const [openWallModal, setOpenWallModal] = React.useState<boolean>(false);
 
-  const fetchTestimonials = async () => {
-    try {
-      setError(null);
-      const response = await axios.get(`/api/getSpaces?id=${slugId}`);
-      setData(response.data.data);
-      setLoading(false);
-      console.log("widget", response.data.data);
-    } catch (error) {
-      console.error("Error fetching testimonials:", error);
-      setError("Failed to load testimonials");
-    }
-  };
+  // const fetchTestimonials = async () => {
+  //   try {
+  //     setError(null);
+  //     const response = await axios.get(`/api/getSpaces?id=${slugId}`);
+  //     setData(response.data.data);
+  //     setLoading(false);
+  //     console.log("widget", response.data.data);
+  //   } catch (error) {
+  //     console.error("Error fetching testimonials:", error);
+  //     setError("Failed to load testimonials");
+  //   }
+  // };
 
-  console.log("data", data);
+  // console.log("data", data);
   console.log("id", slugId);
   console.log("title", spaceTitle);
 

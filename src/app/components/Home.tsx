@@ -4,7 +4,6 @@ import Link from "next/link";
 const Home = () => {
   return (
     <>
-      <Navbar />
       <div className="w-3/4 mx-auto mt-5 lg:mt-16 flex items-center flex-col justify-center max-w-[120rem] text-center">
         <h1 className="text-3xl lg:text-6xl text-gray-100 font-bold">
           Welcome to the Testimonial App

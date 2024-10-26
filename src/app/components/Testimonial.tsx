@@ -1,12 +1,14 @@
+"use client";
+
 import React, { useState, useCallback, useEffect } from "react";
 import { CiHeart } from "react-icons/ci";
 import { FaHeart } from "react-icons/fa";
 import { RiDeleteBinFill } from "react-icons/ri";
 import { FaPen } from "react-icons/fa6";
 import axios from "axios";
-import UpdateModal from "../components/UpdateModal";
-import UpdateVideoModal from "../components/UpdateVideoModal";
-import VideoPlayer from "../components/VideoPlayer";
+import UpdateModal from "./UpdateModal";
+import UpdateVideoModal from "./UpdateVideoModal";
+import VideoPlayer from "./VideoPlayer";
 import { IoMdStar } from "react-icons/io";
 
 interface TestimonialProps {

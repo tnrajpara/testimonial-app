@@ -8,6 +8,7 @@ export async function GET(req: NextRequest) {
   // const parts = pathName?.split("-");
 
   // const id = parts?.slice(0, 5).join("-");
+
   const parts = path.split("/"); // Split the string by '/'
   const lastPart = parts.pop(); // Get the last part of the string
   const spaceId = lastPart?.split("-").slice(0, 5).join("-"); // Join the first 5 segments with '-'

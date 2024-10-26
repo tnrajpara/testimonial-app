@@ -1,4 +1,3 @@
-import React from "react";
 import { FaPen } from "react-icons/fa6";
 import Link from "next/link";
 
@@ -36,7 +35,7 @@ const SpaceSlugNavbar: React.FC<SpaceSlugNavbarProps> = ({
           <p>Edit</p>
         </Link>
       </div>
-      <div className="my-4 w-full h-[0.2px] justify-center text-center  bg-gray-700"></div>
+      {/* <div className="my-4 w-full h-[0.2px] justify-center text-center  bg-gray-700"></div> */}
     </>
   );
 };

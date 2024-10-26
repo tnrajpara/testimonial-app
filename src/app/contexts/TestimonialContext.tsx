@@ -134,6 +134,7 @@ export const TestimonialProvider = ({
 
 export const useTestimonials = () => {
   const context = useContext(TestimonialContext);
+  console.log(context);
   if (context === null) {
     throw new Error(
       "useTestimonials must be used within a TestimonialProvider"

@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { CiHeart } from "react-icons/ci";
 import { FaHeart, FaStar } from "react-icons/fa";
@@ -5,19 +7,52 @@ import UpdateModal from "../components/UpdateModal";
 import axios from "axios";
 import { RiDeleteBinFill } from "react-icons/ri";
 import { FaPen } from "react-icons/fa6";
-import { useTestimonials } from "../contexts/TestimonialContext";
-import Testimonial from "./Testimonial";
+// import { useTestimonials } from "../contexts/TestimonialContext";
+import Testimonial from "../components/Testimonial";
+
+interface TestimonialType {
+  _id: string;
+  type: "text" | "video";
+  rating: number;
+  isLiked: boolean;
+  message?: string;
+  attachments?: string[];
+  photo?: string;
+  name: string;
+  email?: string;
+  extraQuestions?: Record<string, string>;
+  link?: string;
+  uploadedAt?: Date;
+  extraQuestionValues?: Record<string, string>;
+}
 
 interface SpaceSlugComponentProps {
+  spaceId: string;
   spaceImg: string;
 }
 
 const SpaceSlugComponent: React.FC<SpaceSlugComponentProps> = ({
+  spaceId,
   spaceImg,
 }) => {
-  const { testimonials, setTestimonials } = useTestimonials();
+  const [testimonials, setTestimonials] = React.useState<TestimonialType[]>([]);
   const [favorite, setFavorite] = React.useState(false);
   const [openUpdateModal, setOpenUpdateModal] = React.useState(false);
+
+  const fetchTestimonials = async () => {
+    if (!spaceId) return;
+
+    try {
+      const response = await axios.get(`/api/getTestimonials?id=${spaceId}`);
+      setTestimonials(response.data.data);
+    } catch (error) {
+      console.error("Error fetching testimonials:", error);
+    }
+  };
+
+  React.useEffect(() => {
+    fetchTestimonials();
+  }, [spaceId]);
 
   // const handleDelete = (id: string) => async () => {
   //   try {
@@ -68,19 +103,20 @@ const SpaceSlugComponent: React.FC<SpaceSlugComponentProps> = ({
   //   }
   // }, [testimonial._id, testimonial.isLiked]);
 
-  const handleUpdate = React.useCallback(
-    (id: string, isLiked: boolean) => {
-      setTestimonials((prevTestimonials: any) =>
-        prevTestimonials.map((testimonial: any) =>
-          testimonial._id === id ? { ...testimonial, isLiked } : testimonial
-        )
-      );
-    },
-    [setTestimonials]
-  );
+  // const handleUpdate = React.useCallback(
+  //   (id: string, isLiked: boolean) => {
+  //     setTestimonials((prevTestimonials: any) =>
+  //       prevTestimonials.map((testimonial: any) =>
+  //         testimonial._id === id ? { ...testimonial, isLiked } : testimonial
+  //       )
+  //     );
+  //   },
+  //   [setTestimonials]
+  // );
 
   return (
     <div className="w-full md:w-3/5 flex mx-5 min-w-screen flex-col space-y-5">
+      {/* {JSON.stringify(testimonials)} */}
       {testimonials.map((testimonial: any) => {
         return (
           <>
