@@ -33,6 +33,8 @@ interface TestimonialProps {
 const Testimonial: React.FC<TestimonialProps> = ({ testimonial, spaceImg }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [openUpdateModal, setOpenUpdateModal] = useState(false);
+  const [isVideoExpanded, setIsVideoExpanded] = useState(false);
+
   const [openVideoUpdateModal, setVideoUpdateModal] = useState(false);
 
   useEffect(() => {
@@ -75,8 +77,6 @@ const Testimonial: React.FC<TestimonialProps> = ({ testimonial, spaceImg }) => {
     </div>
   );
   const renderContent = () => {
-    const [isVideoExpanded, setIsVideoExpanded] = useState(false);
-
     if (testimonial.type === "text") {
       return (
         <>
