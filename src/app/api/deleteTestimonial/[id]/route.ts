@@ -1,5 +1,5 @@
 import { ObjectId } from "mongodb";
-import dbConnect from "../../../utils/dbConnect";
+import dbConnect from "../../../../utils/dbConnect";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function DELETE(req: NextRequest) {

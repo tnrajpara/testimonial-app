@@ -2,9 +2,8 @@
 
 import React, { useEffect } from "react";
 import { useUser } from "@auth0/nextjs-auth0/client";
-import Dashboard from "./Dashboard";
-import axios from "axios";
-import Home from "./components/Home";
+import Dashboard from "../Dashboard";
+import Home from "../components/Home";
 
 const Page = () => {
   const { user, error, isLoading } = useUser();

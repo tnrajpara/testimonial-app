@@ -12,8 +12,8 @@ const Navbar = () => {
 
   if (isLoading)
     return (
-      <nav className="flex justify-around items-center lg:justify-between mt-7 lg:mt-6 w-full animate-pulse">
-        <div className="flex space-x-2 justify-center items-center ml-5">
+      <nav className="flex justify-around items-center lg:justify-between mt-7 lg:mt-6 w-full animate-pulse py-4 px-4">
+        <div className="flex space-x-2 justify-center items-center ml-5 ">
           <div className="bg-primary-color h-8 lg:h-10 w-32 rounded"></div>
         </div>
         <div className="relative mr-5">
@@ -26,9 +26,9 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`flex justify-around items-center lg:justify-between  mt-7 lg:mt-6 w-full `}
+      className={`flex justify-around items-center lg:justify-between  mt-7 lg:mt-6 w-full py-4 px-4 `}
     >
-      <div className="flex space-x-2 justify-center items-center ml-5">
+      <div className="flex space-x-2 justify-center items-center ml-5 ">
         {" "}
         {/* <VscPreview className="text-blue-300 text-2xl lg:text-3xl" /> */}
         <h1 className="text-gray-100 text-2xl lg:text-3xl font-bold">

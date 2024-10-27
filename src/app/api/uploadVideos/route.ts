@@ -3,7 +3,7 @@ import { Vimeo } from "@vimeo/vimeo";
 import fs from "fs";
 import os from "os";
 import path from "path";
-import dbConnect from "../../utils/dbConnect";
+import dbConnect from "../../../utils/dbConnect";
 
 // Initialize Vimeo client
 const client = new Vimeo(

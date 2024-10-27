@@ -9,18 +9,27 @@
     <title>Embedded Testimonials</title>
   </head>
   <body>
-    <iframe
-      src="http://localhost:3000/embed?id=e381bf31-31ee-45e9-981c-96113d511dcd"
-      width="100%"
-      height="841px"
-      scrolling="no"
-      id="testimonial-embed"
-      frameborder="0"
-    ></iframe>
+    <!-- Add this where you want to embed the testimonials -->
+    <div style="width: 100%; min-height: 800px; position: relative">
+      <iframe
+        src="http://localhost:3000/embed?id=e381bf31-31ee-45e9-981c-96113d511dcd"
+        id="testimonial-embed"
+        width="100%"
+        style="width: 100%; min-height: 800px; border: none; overflow: auto"
+        frameborder="0"
+        scrolling="yes"
+      ></iframe>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.min.js"></script>
     <script>
       iFrameResize(
-        { checkOrigin: false, heightCalculationMethod: "lowestElement" },
+        {
+          checkOrigin: false,
+          heightCalculationMethod: "taggedElement",
+          scrolling: true,
+          autoResize: true,
+        },
         "#testimonial-embed"
       );
     </script>

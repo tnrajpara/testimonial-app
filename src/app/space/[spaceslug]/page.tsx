@@ -1,7 +1,7 @@
 // import React from "react";
 import SpaceSlugNavbar from "@/app/space/SpaceSlugNavbar";
 import SpaceSlugParent from "../SpaceSlugParent";
-import dbConnect from "../../utils/dbConnect";
+import dbConnect from "../../../utils/dbConnect";
 
 // import { useTestimonials } from "../../contexts/TestimonialContext";
 

@@ -27,7 +27,7 @@
 // }
 
 // app/api/getSpaces/route.ts
-import dbConnect from "../../utils/dbConnect";
+import dbConnect from "../../../utils/dbConnect";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest) {

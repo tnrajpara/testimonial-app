@@ -3,11 +3,11 @@ import { useUser } from "@auth0/nextjs-auth0/client";
 import { usePathname } from "next/navigation";
 import axios from "axios";
 import { FaPen } from "react-icons/fa";
-import ParentModal from "./ParentModal";
+import ParentModal from "../components/ParentModal";
 import { IoMdVideocam } from "react-icons/io";
-import VideoModal from "./VideoModal";
+import VideoModal from "../components/VideoModal";
 
-const SpaceComponent = () => {
+const TestimonialComponent = () => {
   const { user } = useUser();
   const sub = user?.sub?.split("|")[1];
   const [testimonialData, setTestimonialData] = React.useState([] as any);
@@ -40,7 +40,7 @@ const SpaceComponent = () => {
   }, [id]);
 
   return (
-    <div className="flex justify-center flex-col text-gray-50 items-center mx-auto min-h-[100vh] bg-[linear-gradient(to_right,#1E293B_1px,transparent_1px),linear-gradient(to_bottom,#334155_1px,transparent_1px)] bg-[size:24px_24px]">
+    <div className="flex justify-center flex-col text-gray-50 items-center mx-auto min-h-[100vh] bg-[linear-gradient(to_right,#151515_1px,transparent_1px),linear-gradient(to_bottom,#151515_1px,transparent_1px)] bg-[size:24px_24px]">
       <div
         className={
           testimonialData.theme === true
@@ -150,4 +150,4 @@ const SpaceComponent = () => {
   );
 };
 
-export default SpaceComponent;
+export default TestimonialComponent;

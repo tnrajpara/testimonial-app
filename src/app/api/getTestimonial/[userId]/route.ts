@@ -1,4 +1,4 @@
-import dbConnect from "../../../utils/dbConnect";
+import dbConnect from "../../../../utils/dbConnect";
 import { NextRequest, NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
 

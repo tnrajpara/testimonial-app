@@ -1,10 +1,10 @@
 "use client";
 
-import SpaceComponent from "@/app/components/SpaceComponent";
+import TestimonialComponent from "../TestimonialComponent";
 import React from "react";
 
 const Space = () => {
-  return <SpaceComponent />;
+  return <TestimonialComponent />;
 };
 
 export default Space;

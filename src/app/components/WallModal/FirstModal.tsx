@@ -57,13 +57,29 @@ const FirstModal: React.FC<FirstModalProps> = ({ onClose }) => {
           </div>
           {jumpToStep === 1 ? (
             <div className=" p-4">
-              <div className="flex justify-center items-center space-x-4">
+              <div className="flex justify-center items-center space-x-4 flex-col space-y-4 mx-auto place-content-center place-items-center ">
                 <div
-                  className="h-[15rem] w-[10rem] bg-gray-200"
+                  className="bg-zinc-900 rounded-md items-center p-4 grid grid-cols-2 md:grid-cols-4 gap-4 justify-items-center place-items-center place-content-center mx-auto"
+                  // className="h-[15rem] w-[10rem] bg-gray-200"
                   onClick={() => {
                     setJumpToStep(2);
                   }}
-                ></div>
+                >
+                  <div className="grid gap-4">
+                    <div className="w-9 h-9 bg-zinc-600"></div>
+                    <div className="w-9 h-9 bg-zinc-700"></div>
+                  </div>
+                  <div className="grid gap-4">
+                    <div className="w-9 h-9 bg-zinc-700"></div>
+                    <div className="w-9 h-9 bg-zinc-600"></div>
+                    <div className="w-9 h-9 bg-zinc-600"></div>
+                  </div>
+                  <div className="grid gap-4">
+                    <div className="w-9 h-9 bg-zinc-600"></div>
+                    <div className="w-9 h-9 bg-zinc-700"></div>
+                  </div>
+                </div>
+                <h1 className="text-xl text-secondary-color">Masonry Grid</h1>
               </div>
             </div>
           ) : (

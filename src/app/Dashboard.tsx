@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import Navbar from "./components/Navbar";
 import AllSpaces from "./components/AllSpaces";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
