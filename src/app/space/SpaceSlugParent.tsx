@@ -14,7 +14,7 @@ const SpaceSlugParent: React.FC<SpaceSlugParentProps> = ({
   spaceTitle,
 }) => {
   return (
-    <div className="flex flex-end justify-center text-gray-100 flex-col lg:flex-row md:items-center">
+    <div className="flex flex-end justify-center text-gray-100 flex-col  md:items-center md:my-7 my-4">
       <SpaceSlugMenubar slugId={spaceId} spaceTitle={spaceTitle} />
       <SpaceSlugComponent spaceImg={spaceImg} spaceId={spaceId} />
     </div>
