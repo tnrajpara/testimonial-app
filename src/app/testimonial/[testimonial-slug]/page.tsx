@@ -3,8 +3,8 @@
 import TestimonialComponent from "../TestimonialComponent";
 import React from "react";
 
-const Space = () => {
+const Page = () => {
   return <TestimonialComponent />;
 };
 
-export default Space;
+export default Page;
