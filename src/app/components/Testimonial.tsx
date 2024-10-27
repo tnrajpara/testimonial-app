@@ -124,7 +124,7 @@ const Testimonial: React.FC<TestimonialProps> = ({ testimonial, spaceImg }) => {
   };
 
   return (
-    <div className="flex flex-col  py-5 space-y-2 lg:mx-6 lg:my-5 mx-3 my-3  border border-secondary-color rounded-2xl bg-primary-color px-6 border-r-2">
+    <div className="flex flex-col  py-5 space-y-2 lg:mx-6 lg:my-5 mx-3 my-3   rounded-2xl bg-primary-color px-6 border-r-2">
       <div className="flex justify-between items-center">
         {renderRating(Number(testimonial.rating))}
         <button
