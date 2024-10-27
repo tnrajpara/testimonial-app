@@ -38,7 +38,7 @@ const FirstModal: React.FC<FirstModalProps> = ({ onClose, title, id }) => {
         >
           &#8203;
         </span>
-        <div className="inline-block align-bottom bg-[#0b0b0b] rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full border border-secondary-color">
+        <div className="inline-block align-bottom bg-[#0b0b0b] rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full ">
           <div className=" px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <span className="font-bold text-2xl">Embed Wall of Love</span>
             <button
@@ -62,7 +62,7 @@ const FirstModal: React.FC<FirstModalProps> = ({ onClose, title, id }) => {
             <div className=" p-4">
               <div className="flex justify-center items-center space-x-4 flex-col space-y-4 mx-auto place-content-center place-items-center ">
                 <div
-                  className="bg-zinc-900 rounded-md items-center p-4 grid grid-cols-2 md:grid-cols-4 gap-4 justify-items-center place-items-center place-content-center mx-auto"
+                  className="bg-zinc-900 rounded-md hover:cursor-pointer items-center p-4 grid grid-cols-2 md:grid-cols-4 gap-4 justify-items-center place-items-center place-content-center mx-auto"
                   // className="h-[15rem] w-[10rem] bg-gray-200"
                   onClick={() => {
                     setJumpToStep(2);
@@ -82,7 +82,7 @@ const FirstModal: React.FC<FirstModalProps> = ({ onClose, title, id }) => {
                     <div className="w-9 h-9 bg-zinc-700"></div>
                   </div>
                 </div>
-                <h1 className="text-xl text-secondary-color">Masonry Grid</h1>
+                <h1 className="text-xl text-text-primary">Masonry Grid</h1>
               </div>
             </div>
           ) : (
@@ -116,7 +116,7 @@ const FirstModal: React.FC<FirstModalProps> = ({ onClose, title, id }) => {
                     })
                   }
                 />
-                <p className="text-secondary-color">Dark Theme</p>
+                <p className="text-text-primary">Dark Theme</p>
               </div>
             </>
           )}

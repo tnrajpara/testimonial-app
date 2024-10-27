@@ -38,7 +38,7 @@ const Page = async ({
 
   return (
     <>
-      <div className="my-4 h-[0.2px] bg-gray-950" />
+      {/* <div className="my-4 h-[0.2px] bg-gray-950" /> */}
       <div className="flex flex-col space-y-3">
         {/* <h1 className="text-xl font-semibold">
           {spaceData.title.split("_").join(" ")}

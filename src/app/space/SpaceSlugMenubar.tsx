@@ -51,18 +51,17 @@ const SpaceSlugMenubar: React.FC<SpaceSlugMenubarProps> = ({
   }
 
   return (
-    <div className="mx-3 my-3 flex flex-col p-2 w-1/4">
-      <ul>
-        <button
-          className="bg-[#0b0b0b] px-4 py-2 w-[10rem] h-[3rem]  text-white rounded-md"
-          onClick={() => {
-            setOpenWallModal(true);
-            console.log("open", openWallModal);
-          }}
-        >
-          Wall of Love
-        </button>
-      </ul>
+    <div className=" my-3 flex  p-2  md:flex-row md:justify-center md:items-center md:w-full md:mx-auto flex-row-reverse ">
+      <button
+        className=" mb-5 bg-primary-color text-text-primary   px-5 py-2  font-semibold rounded-full "
+        onClick={() => {
+          setOpenWallModal(true);
+          console.log("open", openWallModal);
+        }}
+      >
+        Wall of Love
+      </button>
+
       {openWallModal && (
         <FirstModal
           id={slugId ?? ""}
@@ -72,12 +71,12 @@ const SpaceSlugMenubar: React.FC<SpaceSlugMenubarProps> = ({
       )}
 
       <Link
-        className="text-white cursor-pointer"
+        className="text-white cursor-pointer text-[10px] flex justify-center items-center w-1/2 mx-auto"
         href={`http://localhost:3000/testimonial/${slugId}-${spaceTitle
           ?.split("_")
           .join("-")}`}
       >
-        <p>
+        <p className="text-center">
           http://localhost:3000/testimonial/{slugId}-
           {spaceTitle?.toLowerCase().split("_").join("-")}
         </p>
