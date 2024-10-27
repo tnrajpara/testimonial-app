@@ -63,7 +63,13 @@ const SpaceSlugMenubar: React.FC<SpaceSlugMenubarProps> = ({
           Wall of Love
         </button>
       </ul>
-      {openWallModal && <FirstModal onClose={onClose} />}
+      {openWallModal && (
+        <FirstModal
+          id={slugId ?? ""}
+          onClose={onClose}
+          title={spaceTitle ?? ""}
+        />
+      )}
 
       <Link
         className="text-white cursor-pointer"

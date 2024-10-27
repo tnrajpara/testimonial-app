@@ -47,7 +47,7 @@ const TestimonialCard: React.FC<Testimonial> = ({
   uploadedAt,
 }) => {
   return (
-    <div className="bg-purple-100 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-black">
+    <div className=" rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-black">
       <div className="p-6 space-y-4">
         {/* Header */}
         <div className="flex items-start space-x-4">

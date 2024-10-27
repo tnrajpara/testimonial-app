@@ -5,15 +5,18 @@ import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 interface FirstModalProps {
   onClose: () => void;
+  id: string;
+  title: string;
 }
 
-const FirstModal: React.FC<FirstModalProps> = ({ onClose }) => {
+const FirstModal: React.FC<FirstModalProps> = ({ onClose, title, id }) => {
   const [jumpToStep, setJumpToStep] = React.useState(1);
   const [copied, setCopied] = React.useState(false);
+  const [theme, setTheme] = React.useState<string>("light");
 
-  const code = `<iframe src="http://localhost:3000/embed?id=e381bf31-31ee-45e9-981c-96113d511dcd" width="100%" height="841px" scrolling="no" id="testimonial-embed" frameborder="0"></iframe>
+  const code = `<iframe src="http://localhost:3000/embed?id=${id}?theme=${theme}" frameborder="0" scrolling="no" width="100%" id="testimonial-space-tag-all-${theme}"></iframe>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.min.js"></script>
-<script>iFrameResize({checkOrigin: false,heightCalculationMethod: "lowestElement"},"#testimonial-embed");</script>`;
+<script>iFrameResize({checkOrigin: false,heightCalculationMethod: "lowestElement"},"#testimonial-space-tag-all-${theme}");</script>`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(code).then(() => {
@@ -35,7 +38,7 @@ const FirstModal: React.FC<FirstModalProps> = ({ onClose }) => {
         >
           &#8203;
         </span>
-        <div className="inline-block align-bottom bg-[#0b0b0b] rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full border border-[#f4f4f4]">
+        <div className="inline-block align-bottom bg-[#0b0b0b] rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full border border-secondary-color">
           <div className=" px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <span className="font-bold text-2xl">Embed Wall of Love</span>
             <button
@@ -83,25 +86,39 @@ const FirstModal: React.FC<FirstModalProps> = ({ onClose }) => {
               </div>
             </div>
           ) : (
-            <div className="relative mb-4">
-              <button
-                onClick={copyToClipboard}
-                className="absolute top-2 right-2 text-[#0b0b0b] bg-[#f4f4f4] px-2 py-1 rounded text-sm"
-              >
-                {copied ? "Copied!" : "Copy"}
-              </button>
-              <SyntaxHighlighter
-                language="html"
-                style={atomDark}
-                customStyle={{
-                  padding: "1rem",
-                  fontSize: "14px",
-                  margin: "0",
-                }}
-              >
-                {code}
-              </SyntaxHighlighter>
-            </div>
+            <>
+              <div className="relative mb-4 flex flex-col space-y-5 justify-center items-center">
+                <button
+                  onClick={copyToClipboard}
+                  className="absolute top-2 right-2 text-[#0b0b0b] bg-[#f4f4f4] px-2 py-1 rounded text-sm"
+                >
+                  {copied ? "Copied!" : "Copy"}
+                </button>
+                <SyntaxHighlighter
+                  language="html"
+                  style={atomDark}
+                  customStyle={{
+                    padding: "1rem",
+                    fontSize: "14px",
+                    margin: "0",
+                  }}
+                >
+                  {code}
+                </SyntaxHighlighter>
+              </div>
+              <div className="mt-5 mb-5 px-2 py-2 flex space-x-5">
+                <input
+                  type="checkbox"
+                  name="theme"
+                  onClick={() =>
+                    setTheme((prev: string) => {
+                      return prev === "light" ? "dark" : "light";
+                    })
+                  }
+                />
+                <p className="text-secondary-color">Dark Theme</p>
+              </div>
+            </>
           )}
         </div>
       </div>

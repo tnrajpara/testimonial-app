@@ -48,13 +48,13 @@ export default function AllSpaces({ userId }: any) {
                 })}?id=${item.spaceId}`}
                 key={item.id}
               >
-                <div className="flex items-center space-x-4 bg-[#151515] px-2 py-5 rounded-full justify-center ">
+                <div className="flex items-center space-x-4 bg-[#151515] px-2 py-5  justify-around rounded-lg">
                   <img
                     src={item.image}
                     alt=""
-                    className="object-cover rounded-2xl w-1/4 h-1/4"
+                    className="object-cover w-20 h-20 rounded-md md:w-24 md:h-24"
                   />
-                  <p className=" text-2xl font-semibold ">
+                  <p className=" text-2xl font-semibold text-[#f4f4f4]">
                     {item.spacename.split("_").join(" ")}
                   </p>
                 </div>

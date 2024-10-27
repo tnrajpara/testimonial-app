@@ -12,10 +12,10 @@ const config: Config = {
         "gradient-radial": "radial-gradient(#eb4d4b,10px,transparent 10px)",
       },
       colors: {
-        // "base-color": "#0b0b0b",
-        "base-color": "#18181B",
-        // "primary-color": "#151515",
-        "primary-color": "#27272A",
+        "base-color": "#0b0b0b",
+
+        "primary-color": "#151515",
+
         "secondary-color": "#cecfce",
       },
     },
