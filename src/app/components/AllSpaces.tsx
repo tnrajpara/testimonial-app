@@ -1,7 +1,7 @@
 // app/components/AllSpaces.tsx
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import slugify from "slugify";
 import axios from "axios";
@@ -48,11 +48,11 @@ export default function AllSpaces({ userId }: any) {
                 })}?id=${item.spaceId}`}
                 key={item.id}
               >
-                <div className="flex items-center space-x-4 bg-[#151515] px-2 py-5  justify-around rounded-lg">
+                <div className="flex items-center space-x-4 bg-primary-color px-2 py-5  justify-around rounded-lg">
                   <img
                     src={item.image}
                     alt=""
-                    className="object-cover w-20 h-20 rounded-md md:w-24 md:h-24"
+                    className="object-cover w-20 h-20 rounded-md"
                   />
                   <p className=" text-2xl font-semibold text-[#f4f4f4]">
                     {item.spacename.split("_").join(" ")}
