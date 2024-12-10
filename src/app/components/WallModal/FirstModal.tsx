@@ -9,14 +9,34 @@ interface FirstModalProps {
   title: string;
 }
 
-const FirstModal: React.FC<FirstModalProps> = ({ onClose, title, id }) => {
+const FirstModal: React.FC<FirstModalProps> = ({ onClose, id }) => {
   const [jumpToStep, setJumpToStep] = React.useState(1);
   const [copied, setCopied] = React.useState(false);
   const [theme, setTheme] = React.useState<string>("light");
 
-  const code = `<iframe src="http://localhost:3000/embed?id=${id}?theme=${theme}" frameborder="0" scrolling="no" width="100%" id="testimonial-space-tag-all-${theme}"></iframe>
+  const code = `<div style="width: 100%; min-height: 800px; position: relative">
+  <iframe
+    src="https://testimonial-app-sable.vercel.app/embed?id=${id}?theme=${theme}"
+    id="testimonial-embed-${theme}"
+    width="100%"
+    style="width: 100%; min-height: 800px; border: none; overflow: auto"
+    frameborder="0"
+    scrolling="yes"
+  ></iframe>
+</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.2/iframeResizer.min.js"></script>
-<script>iFrameResize({checkOrigin: false,heightCalculationMethod: "lowestElement"},"#testimonial-space-tag-all-${theme}");</script>`;
+<script>
+  iFrameResize(
+    {
+      checkOrigin: false,
+      heightCalculationMethod: "taggedElement",
+      scrolling: true,
+      autoResize: true,
+    },
+    "#testimonial-embed-${theme}"
+  );
+</script>
+`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(code).then(() => {
@@ -38,7 +58,7 @@ const FirstModal: React.FC<FirstModalProps> = ({ onClose, title, id }) => {
         >
           &#8203;
         </span>
-        <div className="inline-block align-bottom bg-[#0b0b0b] rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full ">
+        <div className="inline-block align-bottom bg-[#0b0b0b] rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
           <div className=" px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <span className="font-bold text-2xl">Embed Wall of Love</span>
             <button
@@ -49,7 +69,7 @@ const FirstModal: React.FC<FirstModalProps> = ({ onClose, title, id }) => {
             </button>
           </div>
           <div className="flex space-x-5 justify-center items-center mb-3 ">
-            <span className="bg-[#f4f4f4]  rounded-full text-[#0b0b0b] w-1/6 h-1/6 px-2 py-1 text-center">
+            <span className="bg-[#f4f4f4] rounded-full text-[#0b0b0b] w-1/6 h-1/6 px-2 py-1 text-center">
               Step- {jumpToStep}
             </span>
             <span>
@@ -63,7 +83,6 @@ const FirstModal: React.FC<FirstModalProps> = ({ onClose, title, id }) => {
               <div className="flex justify-center items-center space-x-4 flex-col space-y-4 mx-auto place-content-center place-items-center ">
                 <div
                   className="bg-zinc-900 rounded-md hover:cursor-pointer items-center p-4 grid grid-cols-2 md:grid-cols-4 gap-4 justify-items-center place-items-center place-content-center mx-auto"
-                  // className="h-[15rem] w-[10rem] bg-gray-200"
                   onClick={() => {
                     setJumpToStep(2);
                   }}
@@ -94,17 +113,20 @@ const FirstModal: React.FC<FirstModalProps> = ({ onClose, title, id }) => {
                 >
                   {copied ? "Copied!" : "Copy"}
                 </button>
-                <SyntaxHighlighter
-                  language="html"
-                  style={atomDark}
-                  customStyle={{
-                    padding: "1rem",
-                    fontSize: "14px",
-                    margin: "0",
-                  }}
-                >
-                  {code}
-                </SyntaxHighlighter>
+                <div className="w-full overflow-x-auto">
+                  <SyntaxHighlighter
+                    language="html"
+                    style={atomDark}
+                    customStyle={{
+                      padding: "1rem",
+                      fontSize: "14px",
+                      margin: "0",
+                      width: "max-content",
+                    }}
+                  >
+                    {code}
+                  </SyntaxHighlighter>
+                </div>
               </div>
               <div className="mt-5 mb-5 px-2 py-2 flex space-x-5">
                 <input
