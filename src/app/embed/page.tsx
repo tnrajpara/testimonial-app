@@ -1,4 +1,3 @@
-// app/embed/page.tsx
 import { Suspense } from "react";
 import TestimonialCard from "../components/TestimonialCard";
 import dbConnect from "../../utils/dbConnect";
@@ -22,20 +21,32 @@ interface TestimonialType {
   extraQuestionValues?: Record<string, any>;
 }
 
-interface PageProps {
-  searchParams: {
-    id: string;
-  };
-}
-
 export const dynamic = "force-dynamic";
 export const fetchCache = "force-no-store";
 export const revalidate = 0;
 
-export default async function TestimonialEmbed({ searchParams }: PageProps) {
-  const { id } = searchParams;
 
+
+export default async function TestimonialEmbed({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string | string[] | undefined };
+}) {
   try {
+    // Extract the ID from searchParams and handle the case where it might include theme
+    const rawId = searchParams.id as string;
+    const id = rawId?.split('?')[0];
+
+
+
+    if (!id) {
+      return (
+        <div className="min-h-screen flex items-center justify-center">
+          <p className="text-gray-500">No space ID provided</p>
+        </div>
+      );
+    }
+
     const { db } = await dbConnect();
 
     const rawTestimonials = await db
@@ -64,6 +75,8 @@ export default async function TestimonialEmbed({ searchParams }: PageProps) {
       extraQuestionValues: doc.extraQuestionValues,
     }));
 
+
+
     if (!testimonials || testimonials.length === 0) {
       return (
         <div className="min-h-screen flex items-center justify-center">
@@ -78,8 +91,11 @@ export default async function TestimonialEmbed({ searchParams }: PageProps) {
       columns[index % 3].push(testimonial);
     });
 
+    const theme = rawId.split("?")[1].split("=")[1]
+
+
     return (
-      <div className="w-full bg-white p-4">
+      <div className={`w-full ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'} p-4`}>
         <div className="max-w-7xl mx-auto">
           <Suspense fallback={<TestimonialsSkeleton />}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -87,7 +103,7 @@ export default async function TestimonialEmbed({ searchParams }: PageProps) {
                 <div key={columnIndex} className="flex flex-col gap-4">
                   {column.map((testimonial: TestimonialType) => (
                     <div key={testimonial._id} className="break-inside-avoid">
-                      <TestimonialCard {...testimonial} />
+                      <TestimonialCard {...testimonial} theme={theme} />
                     </div>
                   ))}
                 </div>
