@@ -118,7 +118,7 @@ const SpaceSlugComponent: React.FC<SpaceSlugComponentProps> = ({
   // );
 
   return (
-    <div className="md:grid grid-cols-2 md:w-5/6 flex mx-5 w-1/2 flex-col space-y-5">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mx-5 md:w-5/6 auto-rows-auto">
       {isLoading ? (
         [...Array(4)].map((_, index) => (
           <TestimonialSkeleton key={index} />
@@ -127,10 +127,13 @@ const SpaceSlugComponent: React.FC<SpaceSlugComponentProps> = ({
         <p className="text-white">No Testimonials Found!</p>
       ) : (
         testimonials.map((testimonial: TestimonialType) => (
-          <Testimonial key={testimonial._id} testimonial={testimonial} spaceImg={spaceImg} />
+          <div key={testimonial._id} className="h-fit">
+            <Testimonial testimonial={testimonial} spaceImg={spaceImg} />
+          </div>
         ))
       )}
     </div>
+
   );
 };
 
