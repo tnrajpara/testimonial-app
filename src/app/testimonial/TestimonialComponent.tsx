@@ -80,7 +80,7 @@ const TestimonialComponent = () => {
                 </li>
               ))}
             </ul>
-            <div className="flex space-x-5 mt-7">
+            <div className="flex  mt-7 justify-between w-3/4">
               <div
                 style={{
                   padding: "10px",
@@ -110,6 +110,7 @@ const TestimonialComponent = () => {
                   gap: "15px",
                   justifyContent: "center",
                   alignItems: "center",
+
                 }}
                 onClick={() => {
                   setShowVideoModal(true);

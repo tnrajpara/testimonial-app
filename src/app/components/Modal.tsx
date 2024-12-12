@@ -159,7 +159,7 @@ const Modal: React.FC<ModalProps> = ({
       <div className="fixed z-10 inset-0 overflow-y-auto">
         <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
           <div
-            className="fixed inset-0 bg-primary-color bg-opacity-75 transition-opacity"
+            className="fixed inset-0 bg-base-color bg-opacity-75 transition-opacity"
             aria-hidden="true"
           ></div>
 
@@ -170,7 +170,7 @@ const Modal: React.FC<ModalProps> = ({
             &#8203;
           </span>
 
-          <div className="inline-block align-bottom bg-primary rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+          <div className="inline-block align-bottom bg-primary-color rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
             <div className=" px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
               <button
                 className="absolute top-2 right-2 text-gray-100 hover:text-gray-300"
@@ -184,10 +184,10 @@ const Modal: React.FC<ModalProps> = ({
                   <img
                     src={parentImage}
                     alt="Profile"
-                    className="w-20 h-20 rounded-full object-cover mb-4 mt-4"
+                    className="w-20 h-20 rounded-md object-cover mb-4 mt-4"
                   />
                 </div>
-                <div className="lg:mb-10 mb-5">
+                <div className="lg:mb-10 mb-5 md:mt-10 mt-5">
                   <h1
                     className={
                       "text-gray-300 text-start lg:mr-52 mb-2 mr-20 font-semibold"
@@ -205,12 +205,12 @@ const Modal: React.FC<ModalProps> = ({
                   </ul>
                 </div>
                 <div className="mb-4">
-                  <div className="flex items-center justify-center">
+                  <div className="flex ">
                     {[1, 2, 3, 4, 5].map((star) => (
                       <IoMdStar
                         key={star}
                         size={35}
-                        color={star <= rating ? "#f4f4f4" : "#D1D5DB"}
+                        color={star <= rating ? "#f4f4f4" : "#808080"}
                         onClick={() => handleRatingChange(star)}
                       />
                     ))}
@@ -226,7 +226,7 @@ const Modal: React.FC<ModalProps> = ({
                 </label> */}
                   <textarea
                     id="message"
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 bg-[#0b0b0b] leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 bg-primary-color leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     rows={4}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
@@ -268,7 +268,7 @@ const Modal: React.FC<ModalProps> = ({
                   <div className="flex items-center">
                     <label
                       htmlFor="photo-input"
-                      className="bg-[#f4f4f4]  text-[#0b0b0b]font-bold py-2 px-4 rounded cursor-pointer"
+                      className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded cursor-pointer"
                     >
                       Choose File
                     </label>
@@ -292,7 +292,7 @@ const Modal: React.FC<ModalProps> = ({
                   <input
                     type="text"
                     id="name"
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 bg-[#0b0b0b] leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 bg-primary-color leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     placeholder="Enter your name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
@@ -309,7 +309,7 @@ const Modal: React.FC<ModalProps> = ({
                   <input
                     type="email"
                     id="email"
-                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 bg-[#0b0b0b] leading-tight focus:outline-none focus:shadow-outline"
+                    className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 bg-primary-color leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     placeholder="Enter your email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -328,7 +328,7 @@ const Modal: React.FC<ModalProps> = ({
                       <input
                         type="text"
                         id={`extra-question-${index}`}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 bg-[#0b0b0b] leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 bg-primary-color leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         placeholder={question.text}
                         value={extraQuestionValues[question.text] || ""}
                         onChange={(e) =>
@@ -339,7 +339,7 @@ const Modal: React.FC<ModalProps> = ({
                     ) : (
                       <textarea
                         id={`extra-question-${index}`}
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 bg-[#0b0b0b] leading-tight focus:outline-none focus:shadow-outline"
+                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-100 bg-primary-color leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         rows={2}
                         placeholder={question.text}
                         value={extraQuestionValues[question.text] || ""}
@@ -367,7 +367,7 @@ const Modal: React.FC<ModalProps> = ({
                       className="w-20 h-20 rounded-full object-cover mr-4"
                     />
                   ) : (
-                    <div className="w-20 h-20 rounded-full bg-[#0b0b0b] mr-4"></div>
+                    <div className="w-20 h-20 rounded-full bg-primary-color mr-4"></div>
                   )} */}
                     {singlePhotoURL ? (
                       <img
@@ -376,11 +376,11 @@ const Modal: React.FC<ModalProps> = ({
                         className="w-20 h-20 rounded-full object-cover mr-4"
                       />
                     ) : (
-                      <div className="w-20 h-20 rounded-full bg-[#0b0b0b] mr-4"></div>
+                      <div className="w-20 h-20 rounded-full bg-primary-color mr-4"></div>
                     )}
                     <label
                       htmlFor="single-photo-input"
-                      className="bg-[#f4f4f4]  text-[#0b0b0b] font-bold py-2 px-4 rounded cursor-pointer"
+                      className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded cursor-pointer"
                     >
                       Choose Image
                     </label>
@@ -408,7 +408,7 @@ const Modal: React.FC<ModalProps> = ({
                 <div className="flex justify-end">
                   <button
                     type="submit"
-                    className="bg-[#f4f4f4]  text-[#0b0b0b] font-bold py-2 px-4 rounded"
+                    className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
                   >
                     Submit
                   </button>
@@ -418,6 +418,8 @@ const Modal: React.FC<ModalProps> = ({
           </div>
         </div>
       </div>
+
+
     </>
   );
 };
