@@ -1,4 +1,5 @@
-import React from "react";
+'use client';
+import React, { useState, useEffect } from "react";
 import SpaceSlugMenubar from "./SpaceSlugMenubar";
 import SpaceSlugComponent from "./SpaceSlugComponent";
 
@@ -13,10 +14,21 @@ const SpaceSlugParent: React.FC<SpaceSlugParentProps> = ({
   spaceImg,
   spaceTitle,
 }) => {
+  const [loading, setLoading] = useState(true)
+  useEffect(() => {
+    // Simulate loading delay
+    const timer = setTimeout(() => {
+      setLoading(false)
+    }, 500)
+
+    return () => clearTimeout(timer)
+  }, [])
+
   return (
     <div className="flex flex-end justify-center text-gray-100 flex-col  md:items-center md:my-7 my-4">
       <SpaceSlugMenubar slugId={spaceId} spaceTitle={spaceTitle} />
-      <SpaceSlugComponent spaceImg={spaceImg} spaceId={spaceId} />
+      <SpaceSlugComponent spaceImg={spaceImg} spaceId={spaceId} isLoading={loading}
+      />
     </div>
   );
 };

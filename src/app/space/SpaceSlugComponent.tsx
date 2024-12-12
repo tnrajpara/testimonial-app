@@ -9,6 +9,7 @@ import { RiDeleteBinFill } from "react-icons/ri";
 import { FaPen } from "react-icons/fa6";
 // import { useTestimonials } from "../contexts/TestimonialContext";
 import Testimonial from "../components/Testimonial";
+import { TestimonialSkeleton } from "./SpaceSlugTestimonialSkeleton";
 
 interface TestimonialType {
   _id: string;
@@ -29,11 +30,13 @@ interface TestimonialType {
 interface SpaceSlugComponentProps {
   spaceId: string;
   spaceImg: string;
+  isLoading: boolean;
 }
 
 const SpaceSlugComponent: React.FC<SpaceSlugComponentProps> = ({
   spaceId,
   spaceImg,
+  isLoading
 }) => {
   const [testimonials, setTestimonials] = React.useState<TestimonialType[]>([]);
   const [favorite, setFavorite] = React.useState(false);
@@ -115,19 +118,18 @@ const SpaceSlugComponent: React.FC<SpaceSlugComponentProps> = ({
   // );
 
   return (
-    <div className=" md:grid grid-cols-2 md:w-5/6  flex mx-5 w-1/2 flex-col space-y-5">
-      {/* {JSON.stringify(testimonials)} */}
-      {testimonials.length < 0 && (
+    <div className="md:grid grid-cols-2 md:w-5/6 flex mx-5 w-1/2 flex-col space-y-5">
+      {isLoading ? (
+        [...Array(4)].map((_, index) => (
+          <TestimonialSkeleton key={index} />
+        ))
+      ) : testimonials.length === 0 ? (
         <p className="text-white">No Testimonials Found!</p>
+      ) : (
+        testimonials.map((testimonial: TestimonialType) => (
+          <Testimonial key={testimonial._id} testimonial={testimonial} spaceImg={spaceImg} />
+        ))
       )}
-      {testimonials.length > 0 &&
-        testimonials.map((testimonial: any) => {
-          return (
-            <>
-              <Testimonial testimonial={testimonial} spaceImg={spaceImg} />
-            </>
-          );
-        })}
     </div>
   );
 };
