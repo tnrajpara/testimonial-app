@@ -159,7 +159,7 @@ const Modal: React.FC<ModalProps> = ({
       <div className="fixed z-10 inset-0 overflow-y-auto">
         <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
           <div
-            className="fixed inset-0 bg-gray-950 bg-opacity-75 transition-opacity"
+            className="fixed inset-0 bg-primary-color bg-opacity-75 transition-opacity"
             aria-hidden="true"
           ></div>
 
@@ -170,8 +170,8 @@ const Modal: React.FC<ModalProps> = ({
             &#8203;
           </span>
 
-          <div className="inline-block align-bottom bg-[#0b0b0b] rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-            <div className="bg-[#0b0b0b] px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+          <div className="inline-block align-bottom bg-primary rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+            <div className=" px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
               <button
                 className="absolute top-2 right-2 text-gray-100 hover:text-gray-300"
                 onClick={onClose}
