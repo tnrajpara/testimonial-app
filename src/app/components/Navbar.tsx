@@ -31,7 +31,7 @@ const Navbar = () => {
       <div className="flex space-x-2 justify-center items-center ml-5 ">
         {" "}
         {/* <VscPreview className="text-blue-300 text-2xl lg:text-3xl" /> */}
-        <h1 className="text-gray-100 text-2xl lg:text-3xl font-bold">
+        <h1 className="text-gray-300 text-2xl lg:text-3xl font-bold">
           Testimonial{" "}
         </h1>
       </div>

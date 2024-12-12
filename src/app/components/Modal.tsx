@@ -179,14 +179,14 @@ const Modal: React.FC<ModalProps> = ({
                 <IoMdClose size={24} />
               </button>
 
-              <form onSubmit={handleSubmit}>
-                <div className="flex justify-center">
-                  <img
-                    src={parentImage}
-                    alt="Profile"
-                    className="w-20 h-20 rounded-md object-cover mb-4 mt-4"
-                  />
-                </div>
+              <form onSubmit={handleSubmit} className="px-4 py-4 md:mt-8 mt-4">
+
+                <img
+                  src={parentImage}
+                  alt="Profile"
+                  className="w-20 h-20 rounded-md object-cover mb-4 mt-4"
+                />
+
                 <div className="lg:mb-10 mb-5 md:mt-10 mt-5">
                   <h1
                     className={
