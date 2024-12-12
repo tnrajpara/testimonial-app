@@ -43,17 +43,18 @@ export async function GET(req: NextRequest) {
       .find({ spaceId: spaceId })
       .toArray();
 
+    console.log(testimonialData);
     // Process the data to handle both text and video testimonials
     const processedData = testimonialData.map((testimonial: any) => {
       if (testimonial.type === "video") {
         return {
           _id: testimonial._id,
-          type: "video",
           link: testimonial.link,
+          publicId: testimonial.publicId,
           name: testimonial.name,
-          uploadedAt: testimonial.uploadedAt,
-          rating: testimonial.rating,
           extraQuestionValues: testimonial.extraQuestionValues || {},
+          rating: testimonial.rating,
+          type: "video",
           isLiked: false,
           spaceId: testimonial.spaceId,
         };

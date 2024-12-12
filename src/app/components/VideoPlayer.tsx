@@ -1,85 +1,73 @@
 'use client'
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 interface VideoPlayerProps {
-  videoId: string | undefined;
+  link?: string;
+  publicId?: string;
+  cloudName?: string;
   isExpanded?: boolean;
   onToggleExpand?: () => void;
 }
 
 const VideoPlayer = ({
-  videoId,
+  publicId,
+  cloudName = "dihjks0ut", // your cloud name
   isExpanded = false,
-  onToggleExpand,
+  onToggleExpand
 }: VideoPlayerProps) => {
-  const [videoLink, setVideoLink] = useState<string | null>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [iframeHeight, setIframeHeight] = useState<number>(0);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchVideoData = async () => {
-      try {
-        const response = await fetch(
-          `https://api.vimeo.com/videos/${videoId}`,
-          {
-            headers: {
-              Authorization: "Bearer cfc1dfaa656e2c34b56ee17cf91230a4",
-            },
-          }
-        );
-        const data = await response.json();
-
-        const customizedUrl = new URL(data.player_embed_url);
-        customizedUrl.searchParams.append("title", "0");
-        customizedUrl.searchParams.append("byline", "0");
-        customizedUrl.searchParams.append("portrait", "0");
-        customizedUrl.searchParams.append("playsinline", "0");
-        customizedUrl.searchParams.append("autopause", "0");
-        customizedUrl.searchParams.append("quality", "1080p");
-        customizedUrl.searchParams.append("transparent", "0");
-        customizedUrl.searchParams.append("color", "ffffff");
-        customizedUrl.searchParams.append("controls", "1");
-        customizedUrl.searchParams.append("like", "0");
-        customizedUrl.searchParams.append("watchlater", "0");
-        customizedUrl.searchParams.append("share", "0");
-        customizedUrl.searchParams.append("pip", "0");
-        customizedUrl.searchParams.append("dnt", "1");
-
-        setVideoLink(customizedUrl.toString());
-      } catch (error) {
-        console.error("Error fetching video data:", error);
+    const calculateHeight = () => {
+      if (iframeRef.current) {
+        const width = iframeRef.current.offsetWidth;
+        // 16:9 aspect ratio
+        const height = (width * 9) / 16;
+        setIframeHeight(height);
       }
     };
 
-    if (videoId) {
-      fetchVideoData();
-    }
-  }, [videoId]);
+    // Initial calculation
+    calculateHeight();
+    setLoading(false);
 
-  if (!videoLink) {
-    return <div>Loading...</div>;
+    // Recalculate on window resize
+    window.addEventListener('resize', calculateHeight);
+
+    return () => {
+      window.removeEventListener('resize', calculateHeight);
+    };
+  }, []);
+
+  if (!publicId) {
+    return <div className="w-full aspect-video bg-gray-100 animate-pulse rounded-lg" />;
   }
 
   const containerClasses = isExpanded
     ? "fixed inset-0 z-50 bg-black bg-opacity-75 flex items-center justify-center p-4"
-    : "w-full max-w-xl aspect-video cursor-pointer hover:opacity-90 transition-opacity";
+    : "w-full relative aspect-video cursor-pointer hover:opacity-90 transition-opacity rounded-lg overflow-hidden";
 
-  const videoClasses = isExpanded
+  const iframeClasses = isExpanded
     ? "w-full max-w-6xl aspect-video"
     : "w-full h-full";
 
   return (
     <div className={containerClasses} onClick={onToggleExpand}>
-      <div className={videoClasses}>
-        {videoLink && (
-          <iframe
-            src={videoLink}
-            width="100%"
-            height="100%"
-            frameBorder="0"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-            className="w-full h-full"
-          ></iframe>
+      <div className={iframeClasses}>
+        {loading && (
+          <div className="absolute inset-0 bg-gray-100 animate-pulse rounded-lg" />
         )}
+        <iframe
+          ref={iframeRef}
+          className="w-full rounded-lg"
+          style={{ height: iframeHeight || 'auto', aspectRatio: '16/9' }}
+          src={`https://player.cloudinary.com/embed/?cloud_name=${cloudName}&public_id=${publicId}&player[fluid]=true&player[controls]=true&player[colors][base]=#ffffff&player[colors][accent]=#2563eb`}
+          allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+          allowFullScreen
+          loading="lazy"
+        />
       </div>
     </div>
   );

@@ -1,4 +1,6 @@
+'use client'
 import VideoPlayer from './VideoPlayer';
+import { useState } from 'react'
 
 interface Testimonial {
   _id: string;
@@ -43,6 +45,7 @@ const TestimonialCard: React.FC<Testimonial & { theme?: string }> = ({
   theme = 'light'
 }) => {
   const isDark = theme === 'dark';
+  const [isExpanded, setIsExpanded] = useState<boolean>(false)
 
   return (
     <div className={`w-full h-full rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden border ${isDark ? 'border-gray-700 bg-gray-800' : 'border-gray-200 bg-white'}`}>
@@ -99,13 +102,17 @@ const TestimonialCard: React.FC<Testimonial & { theme?: string }> = ({
           </div>
         )}
 
-        {/* Video Player */}
-        {type === "video" && link && (
+
+        {type === "video" && (
           <div className="relative rounded-lg overflow-hidden mt-4">
-            <VideoPlayer videoId={link.split("/").pop()} />
+            <VideoPlayer
+              publicId={link?.split('upload/')[1]?.split('.')[0]} // Extracts the public ID from the Cloudinary URL
+              cloudName="dihjks0ut" // Replace with your cloud name
+              isExpanded={isExpanded}
+              onToggleExpand={() => setIsExpanded(!isExpanded)}
+            />
           </div>
-        )}
-      </div>
+        )}   </div>
     </div>
   );
 };

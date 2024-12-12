@@ -51,7 +51,7 @@ const SpaceSlugMenubar: React.FC<SpaceSlugMenubarProps> = ({
   }
 
   return (
-    <div className=" my-3 flex  p-2  md:flex-row md:justify-around  md:items-stretch md:w-full md:mx-auto flex-row-reverse ">
+    <div className=" flex justify-center items-center my-auto space-x-5">
       <button
         className=" mb-5 bg-primary-color text-text-primary   px-5 py-2  font-semibold rounded-full "
         onClick={() => {
@@ -71,14 +71,13 @@ const SpaceSlugMenubar: React.FC<SpaceSlugMenubarProps> = ({
       )}
 
       <Link
-        className="text-white cursor-pointer text-[10px] flex justify-center items-center w-1/2 mx-auto"
+        className="mb-5 bg-primary-color text-text-primary   px-5 py-2  font-semibold rounded-full"
         href={`http://localhost:3000/testimonial/${slugId}-${spaceTitle
           ?.split("_")
           .join("-")}`}
       >
-        <p className="text-center">
-          http://localhost:3000/testimonial/{slugId}-
-          {spaceTitle?.toLowerCase().split("_").join("-")}
+        <p className="text-center underline">
+          View Layout
         </p>
       </Link>
     </div>

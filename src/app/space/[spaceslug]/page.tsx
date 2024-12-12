@@ -38,20 +38,15 @@ const Page = async ({
 
   return (
     <>
-      {/* <div className="my-4 h-[0.2px] bg-gray-950" /> */}
-      <div className="flex flex-col space-y-3">
-        {/* <h1 className="text-xl font-semibold">
-          {spaceData.title.split("_").join(" ")}
-        </h1> */}
 
-        {spaceId && (
-          <SpaceSlugNavbar
-            spaceImg={spaceData.image}
-            spaceTitle={spaceData.title}
-            spaceId={spaceId}
-          />
-        )}
-      </div>
+
+      {spaceId && (
+        <SpaceSlugNavbar
+          spaceImg={spaceData.image}
+          spaceTitle={spaceData.title}
+          spaceId={spaceId}
+        />
+      )}
 
       <SpaceSlugParent
         spaceId={spaceId}

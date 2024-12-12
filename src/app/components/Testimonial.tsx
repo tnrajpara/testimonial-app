@@ -97,11 +97,13 @@ const Testimonial: React.FC<TestimonialProps> = ({ testimonial, spaceImg }) => {
       );
     } else if (testimonial.type === "video" && testimonial.link) {
       return (
-        <VideoPlayer
-          videoId={testimonial.link.split("/").pop()}
-          isExpanded={isVideoExpanded}
-          onToggleExpand={() => setIsVideoExpanded(!isVideoExpanded)}
-        />
+        <div className="w-4/5 h-4/5">
+          <VideoPlayer
+            publicId={testimonial.link?.split('upload/')[1]?.split('.')[0]} // Extracts the public ID from the Cloudinary URL
+            isExpanded={isVideoExpanded}
+            onToggleExpand={() => setIsVideoExpanded(!isVideoExpanded)}
+          />
+        </div>
       );
     }
     return null;

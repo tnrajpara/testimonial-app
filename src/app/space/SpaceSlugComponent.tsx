@@ -115,7 +115,7 @@ const SpaceSlugComponent: React.FC<SpaceSlugComponentProps> = ({
   // );
 
   return (
-    <div className="w-full md:w-3/5 flex mx-5 min-w-screen flex-col space-y-5">
+    <div className=" md:grid grid-cols-2 md:w-5/6  flex mx-5 w-1/2 flex-col space-y-5">
       {/* {JSON.stringify(testimonials)} */}
       {testimonials.length < 0 && (
         <p className="text-white">No Testimonials Found!</p>

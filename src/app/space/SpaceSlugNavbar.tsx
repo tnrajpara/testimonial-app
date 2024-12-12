@@ -14,11 +14,11 @@ const SpaceSlugNavbar: React.FC<SpaceSlugNavbarProps> = ({
 }) => {
   return (
     <>
-      <div className="flex space-x-3 text-gray-100 lg:px-3 px-3 md:mr-3 md:py-4 py-2 md:w-full md:justify-between mx-auto">
+      <div className="flex space-x-3  mx-auto w-5/6 justify-between md:mt-6">
         <div className="flex items-center space-x-2 ">
-          <img src={spaceImg} className="w-14 h-14 rounded-md object-cover" />
+          <img src={spaceImg} className="w-10 h-10 rounded-md object-cover" />
           <div>
-            <h1 className="text-lg font-semibold">
+            <h1 className="text-lg font-semibold text-gray-300">
               {spaceTitle.split("_").join(" ")}
             </h1>
           </div>
