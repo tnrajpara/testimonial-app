@@ -33,9 +33,16 @@ const SpaceSlugMenubar: React.FC<SpaceSlugMenubarProps> = ({
   //   }
   // };
 
-  // console.log("data", data);
-  console.log("id", slugId);
-  console.log("title", spaceTitle);
+
+  const baseUrl = typeof window !== 'undefined' ?
+    window.location.origin === 'http://localhost:3000' ?
+      'http://localhost:3000' :
+      'https://testimonial-app-sable.vercel.app' :
+    'https://testimonial-app-sable.vercel.app';
+
+  const formattedTitle = spaceTitle?.split("_").join("-");
+  const href = `${baseUrl}/testimonial/${slugId}-${formattedTitle}`;
+
 
   const onClose = () => {
     setOpenWallModal(false);
@@ -72,9 +79,7 @@ const SpaceSlugMenubar: React.FC<SpaceSlugMenubarProps> = ({
 
       <Link
         className="mb-5 bg-primary-color text-text-primary   px-5 py-2  font-semibold rounded-full"
-        href={`http://localhost:3000/testimonial/${slugId}-${spaceTitle
-          ?.split("_")
-          .join("-")}`}
+        href={href}
       >
         <p className="text-center underline">
           View Layout
