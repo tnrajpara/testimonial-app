@@ -6,7 +6,6 @@ interface TestimonialComponentProps {
 const TestimonialComponent: React.FC<TestimonialComponentProps> = ({
   data,
 }: TestimonialComponentProps) => {
-  console.log("TestimonialComponent:", { data });
   return (
     <React.Suspense fallback={<div>Loading...</div>}>
       {data?.map((item: any) => {

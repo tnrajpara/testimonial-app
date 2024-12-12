@@ -56,7 +56,7 @@ const TestimonialComponent = () => {
           />
         )}
         {loading ? (
-          <div>Loading testimonials...</div> // Show loading state
+          <div className="md:w-1/2 md:h-1/2 animate-ping bg-primary-color"></div>
         ) : (
           <div className="flex flex-col justify-center items-center">
             <h1
