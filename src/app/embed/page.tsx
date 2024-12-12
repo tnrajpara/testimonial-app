@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import TestimonialCard from "../components/TestimonialCard";
 import dbConnect from "../../utils/dbConnect";
+import TestimonialMasonry from "../components/TestimonialMasonry";
 
 interface TestimonialType {
   _id: string;
@@ -95,23 +96,13 @@ export default async function TestimonialEmbed({
 
 
     return (
-      <div className={`w-full ${theme === 'dark' ? 'bg-gray-900' : 'bg-white'} p-4`}>
-        <div className="max-w-7xl mx-auto">
-          <Suspense fallback={<TestimonialsSkeleton />}>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {columns.map((column, columnIndex) => (
-                <div key={columnIndex} className="flex flex-col gap-4">
-                  {column.map((testimonial: TestimonialType) => (
-                    <div key={testimonial._id} className="break-inside-avoid">
-                      <TestimonialCard {...testimonial} theme={theme} />
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
-          </Suspense>
-        </div>
-      </div>
+      // In your page component:
+      <Suspense fallback={<TestimonialsSkeleton />}>
+        <TestimonialMasonry
+          testimonials={testimonials}
+          theme={theme}
+        />
+      </Suspense>
     );
   } catch (error) {
     console.error("Error fetching testimonials:", error);
