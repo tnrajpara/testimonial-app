@@ -44,8 +44,8 @@ const TestimonialComponent = () => {
       <div
         className={
           testimonialData.theme === true
-            ? " lg:w-1/2 w-full h-full  flex bg-[#0b0b0b] text-gray-50 mt-5 justify-center flex-col items-center px-3 py-4 rounded-md border border-black"
-            : "lg:w-1/2  w-full h-full  flex isolate aspect-video bg-base-color  text-gray-100 mt-5 justify-center flex-col items-center px-3 py-4 rounded-md"
+            ? " lg:w-1/2 w-full h-full  flex bg-primary-color  text-gray-50  mt-5 justify-center flex-col items-center px-3 py-4 md:py-10 rounded-3xl "
+            : "lg:w-1/2  w-full h-full  flex bg-gray-50 text-primary-color  mt-5 justify-center flex-col items-center px-3 py-4 md:py-10 rounded-3xl"
         }
       >
         {testimonialData.image && (
@@ -63,7 +63,7 @@ const TestimonialComponent = () => {
               className={
                 testimonialData.theme === true
                   ? "text-gray-300 text-2xl lg:text-4xl mt-10 mb-5 font-semibold"
-                  : "text-gray-800 text-2xl lg:text-4xl mt-10 mb-5 font-semibold"
+                  : "text-primary-color text-2xl lg:text-4xl mt-10 mb-5 font-semibold"
               }
             >
               {testimonialData.title.split("_").join(" ")}
@@ -80,18 +80,16 @@ const TestimonialComponent = () => {
                 </li>
               ))}
             </ul>
-            <div className="flex space-x-5">
+            <div className="flex space-x-5 mt-7">
               <div
-                className="bg-violet-900"
                 style={{
                   padding: "10px",
-                  borderRadius: "4px",
+                  borderRadius: "10%",
                   display: "flex",
                   gap: "15px",
                   justifyContent: "center",
                   alignItems: "center",
                   backgroundColor: testimonialData.buttonColor,
-                  width: "calc(100% - 20px)",
                 }}
               >
                 <FaPen />
@@ -100,26 +98,24 @@ const TestimonialComponent = () => {
                     setShowModal(true);
                     console.log("clicked", showModal);
                   }}
+                  className="text-md"
                 >
                   Send in Text{" "}
                 </button>
               </div>
               <div
                 style={{
-                  padding: "10px",
                   borderRadius: "4px",
                   display: "flex",
                   gap: "15px",
                   justifyContent: "center",
                   alignItems: "center",
-                  width: "calc(100% - 20px)",
                 }}
                 onClick={() => {
                   setShowVideoModal(true);
                 }}
               >
-                <IoMdVideocam className="text-xl" />
-
+                <IoMdVideocam className="" />
                 <button>Record a Video</button>
               </div>
             </div>
